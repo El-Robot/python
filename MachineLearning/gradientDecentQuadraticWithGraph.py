@@ -6,13 +6,14 @@ from time import sleep
 
 class LinearReg:
 
-    def __init__(self, x, y, a=0.0001):  # constructor
+    def __init__(self, x, y, a=0.001):  # constructor
         self.coeff = [0, 0, 0]
         self.x = x
         self.y = y
         self.a = a
 
-        self.plottingListX = range(-9, 10)
+        self.plottingListX = [*range(-90, 100)]
+        self.plottingListX = [i * 0.1 for i in self.plottingListX]
         self.plottingListY = [0]*len(self.plottingListX)
 
         plt.ion()
@@ -74,14 +75,14 @@ class LinearReg:
     def updatePlot(self):
         
         self.plot.set_ydata(self.plottingListY)
-        #self.fig.set_title("y = " + str(round(self.coeff[0], 2)) + " + " + str(round(self.coeff[1], 3)) + "x" + " + " + str(round(self.coeff[2], 2)) + "x²")
+        # self.fig.set_title("y = " + str(round(self.coeff[0], 2)) + " + " + str(round(self.coeff[1], 3)) + "x" + " + " + str(round(self.coeff[2], 2)) + "x²")
         self.fig.canvas.draw()
         self.fig.canvas.flush_events()
 
 if __name__ == "__main__":
 
-    y = [1, 2, 3, 4]
-    x = [1, 2, 3, 4]
+    y = [1, 4, 9]
+    x = [-1, 2, 3]
 
-    lin = LinearReg(x, y)
+    lin = LinearReg(x, y, 1)
     lin.find()
