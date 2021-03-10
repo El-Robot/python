@@ -15,15 +15,16 @@ class LinearReg:
 
         xRange = max(x) - min(x)
         yRange = max(y) - min(y)
-        self.plottingListX = np.arange(min(x) - 0.2*xRange, max(x)+ 0.2*xRange, ((max(x)+ 0.2*xRange) - (min(x) - 0.2*xRange))/100)
+        self.plottingListX = np.arange(min(
+            x) - 0.2*xRange, max(x) + 0.2*xRange, ((max(x) + 0.2*xRange) - (min(x) - 0.2*xRange))/100)
         self.plottingListX = self.plottingListX.tolist()
         self.plottingListY = [0]*len(self.plottingListX)
 
         plt.ion()
         self.fig, self.ax = plt.subplots()
 
-        plt.xlim(min(x) - 0.2*xRange, max(x)+ 0.2*xRange)
-        plt.ylim(min(y) - 0.2*yRange, max(y)+ 0.2*yRange)
+        plt.xlim(min(x) - 0.2*xRange, max(x) + 0.2*xRange)
+        plt.ylim(min(y) - 0.2*yRange, max(y) + 0.2*yRange)
 
         self.plot, = self.ax.plot(self.plottingListX, self.plottingListY)
         plt.scatter(x, y)
@@ -60,9 +61,10 @@ class LinearReg:
                     strikes = 10
                 else:
                     strikes -= 1
+
                 if strikes == 0:
                     raise OverflowError
-            
+
                 temp = [0]*(self.n+1)
                 for i in range(len(self.coeff)):
                     temp[i] = self.coeff[i] - self.gradientNth(i)
@@ -106,8 +108,8 @@ class LinearReg:
 
 if __name__ == "__main__":
 
-    y = [0, 1.5, 4, 10]
-    x = [0, -1, 2, 3]
+    y = [3, 4, 8]
+    x = [1, 2, 3]
 
-    lin = LinearReg(x, y, 3)
+    lin = LinearReg(x, y, 2)
     lin.find()
