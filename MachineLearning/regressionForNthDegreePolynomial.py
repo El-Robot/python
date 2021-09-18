@@ -6,7 +6,7 @@ from time import sleep
 
 class LinearReg:
 
-    def __init__(self, x, y, n, a=4):  # constructor
+    def __init__(self, x, y, n, a=2):  # constructor
         self.coeff = [0]*(n+1)
         self.n = n
         self.x = x
@@ -58,7 +58,7 @@ class LinearReg:
 
                 if minCost > abs(self.cost()):
                     minCost = abs(self.cost())
-                    strikes = 10
+                    strikes = 20
                 else:
                     strikes -= 1
 
@@ -83,8 +83,8 @@ class LinearReg:
                 for x in self.plottingListX:
                     self.plottingListY.append(self.h(x))
 
-                print(self.coeff)
-                print("a = " + str(self.a))
+                # print(self.coeff)
+                # print("a = " + str(self.a))
                 self.updatePlot()
 
         except OverflowError:
@@ -97,7 +97,7 @@ class LinearReg:
         for i in range(1, self.n + 1):
             eqString += (" + " + str(round(self.coeff[i], 2)) + "x^" + str(i))
 
-        print(eqString)
+        # print(eqString)
 
     def updatePlot(self):
 
@@ -108,8 +108,8 @@ class LinearReg:
 
 if __name__ == "__main__":
 
-    y = [3, 4, 8]
-    x = [1, 2, 3]
+    y = [3, 4, 5, 6, 7]
+    x = [1, 2, 4, 5, 6]
 
-    lin = LinearReg(x, y, 2)
+    lin = LinearReg(x, y, 4, 0.0001)
     lin.find()

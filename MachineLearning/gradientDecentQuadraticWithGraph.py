@@ -6,7 +6,7 @@ from time import sleep
 
 class LinearReg:
 
-    def __init__(self, x, y, a=0.001):  # constructor
+    def __init__(self, x, y, a=1):  # constructor
         self.coeff = [0, 0, 0]
         self.x = x
         self.y = y
@@ -81,8 +81,8 @@ class LinearReg:
 
 if __name__ == "__main__":
 
-    y = [1, 4, 9]
-    x = [-1, 2, 3]
+    y = [1, 4, 9, 0]
+    x = [-1, 2, 3, 0]
 
-    lin = LinearReg(x, y, 1)
+    lin = LinearReg(x, y, 0.01)
     lin.find()

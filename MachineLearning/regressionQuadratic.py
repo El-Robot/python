@@ -46,7 +46,7 @@ class LinearReg:
             self.coeff[1] = temp1
             self.coeff[2] = temp2
 
-            print(self.coeff)
+            
 
         print("y = " + str(round(self.coeff[0], 2)) + " + " + str(
             round(self.coeff[1], 2)) + "x" + " + " + str(round(self.coeff[2], 2)) + "x²")

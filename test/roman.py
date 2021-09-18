@@ -1,6 +1,12 @@
-import re
+def add(num):
+    num += 1
+    print(num)
 
-numeral = input("Roman Numeral: ")
-numeral.upper()
+def main():
+    i = 8
+    add(i)
+    print(i)
 
-pattern = ""
+
+if __name__ == "__main__":
+    main()
