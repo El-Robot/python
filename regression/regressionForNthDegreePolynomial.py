@@ -111,5 +111,5 @@ if __name__ == "__main__":
     y = [3, 4, 5, 6, 7]
     x = [1, 2, 4, 5, 6]
 
-    lin = LinearReg(x, y, 4, 0.0001)
+    lin = LinearReg(x, y, 1, 0.01)
     lin.find()
