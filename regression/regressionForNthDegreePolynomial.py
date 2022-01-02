@@ -108,8 +108,8 @@ class LinearReg:
 
 if __name__ == "__main__":
 
-    y = [3, 4, 5, 6, 7]
+    y = [3, 4, 5, 3, 2]
     x = [1, 2, 4, 5, 6]
 
-    lin = LinearReg(x, y, 1, 0.01)
+    lin = LinearReg(x, y, 3, 0.01)
     lin.find()
