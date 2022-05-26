@@ -81,7 +81,7 @@ class LinearReg:
 
 if __name__ == "__main__":
 
-    y = [1, 4, 11, 0]
+    y = [1, 4, 13, 0]
     x = [-1, 2, 3, 0]
 
     lin = LinearReg(x, y, 0.01)
