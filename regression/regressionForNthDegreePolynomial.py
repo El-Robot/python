@@ -1,7 +1,8 @@
-import matplotlib.pyplot as plt
-from IPython.display import clear_output
-import numpy as np
 from time import sleep
+
+import matplotlib.pyplot as plt
+import numpy as np
+# from IPython.display import clear_output
 
 
 class LinearReg:
@@ -111,5 +112,5 @@ if __name__ == "__main__":
     y = [3, 4, 5, 3, 2]
     x = [1, 2, 4, 5, 6]
 
-    lin = LinearReg(x, y, 4, 0.01)
+    lin = LinearReg(x, y, 2, 0.1)
     lin.find()

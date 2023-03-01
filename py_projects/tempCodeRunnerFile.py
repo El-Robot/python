@@ -1,0 +1,1 @@
+np.piecewise(t, [t <= 0, t > 0], [0, np.pi])
