@@ -3,7 +3,7 @@
 <head><meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>cs_362_hw2</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+<title>phys307_hw5</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 
 
 
@@ -14597,7 +14597,22 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h1 id="Homework-2">Homework 2<a class="anchor-link" href="#Homework-2">&#182;</a></h1><h3 id="Due:-End-of-Day-Sunday-March-5th,-2023">Due: End of Day Sunday March 5th, 2023<a class="anchor-link" href="#Due:-End-of-Day-Sunday-March-5th,-2023">&#182;</a></h3><h3 id="Tristan-Larkin">Tristan Larkin<a class="anchor-link" href="#Tristan-Larkin">&#182;</a></h3><p>Colaborators: Andrew, Andrew, Althea, Chat GPT</p>
+<h1 id="Homework-5">Homework 5<a class="anchor-link" href="#Homework-5">&#182;</a></h1><h3 id="Tristan-Larkin">Tristan Larkin<a class="anchor-link" href="#Tristan-Larkin">&#182;</a></h3><h3 id="(Due-Date:-Monday,-Mar.-06)">(Due Date: Monday, Mar. 06)<a class="anchor-link" href="#(Due-Date:-Monday,-Mar.-06)">&#182;</a></h3>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="Problem-1">Problem 1<a class="anchor-link" href="#Problem-1">&#182;</a></h2><p>The initial activity $𝑁_0$ and lifetime 𝜏 of a radioactive source are known with an uncertainty of 1% each, 
+$\frac{\sigma_{N_0}}{N_0}=\frac{\sigma_{\tau}}{\tau}=1\%$. The activity at any later time $t$ is:<br />
+$$ N(𝑡)=N_0e^{−t/ \tau} $$<br />
+(a) Find the error in terms of $t$, activity $N_0$ and $\tau$.  <br />
+(b) For what value of ($t/\tau$) do the errors in $N_0$ and $\tau$ contribute equally to the uncertainty in $𝑁(𝑡)$?</p>
 
 </div>
 </div>
@@ -14609,12 +14624,16 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Problem-1">Problem 1<a class="anchor-link" href="#Problem-1">&#182;</a></h2><p>In the lectures, we discussed the problem of optimizing matrix chain multiplication using dynamic
-program. The twist of this problem is that we shall assume that we have a special “hardware
-accelerator” than can calculate inner product in $O(1)$ time. Now observe that with this special
-hardware, multiplying two matrices $A_{m \times n}$ and $B_{n \times k}$ will only takes $O(mk)$ time instead of the usual
-$O(mnk)$ time. Discuss that if there is a better algorithm to minimize matrix chain operations under
-this new hardware.</p>
+<p>(a) We know that the error in $N$ will be given by the equation:
+$$ \sigma_N (t) = \sqrt{(\frac{\partial N}{\partial N_0} \sigma_{N_0})^2+
+                        (\frac{\partial N}{\partial \tau} \sigma_{\tau})^2+
+                        (\frac{\partial N}{\partial t} \sigma_{t})^2}$$
+$$ \sigma_N (t) = \sqrt{(\sigma_{N_0}e^{-t/\tau})^2+
+                        (\frac{t \sigma_{\tau} N_0}{\tau^2} e^{-t/\tau})^2+
+                        (\frac{-\sigma_{t} N_0}{\tau} e^{-t/\tau})^2}$$</p>
+<p>If we take $t$ to be an exact value we are left with:
+$$ \sigma_N (t) = \sqrt{(\sigma_{N_0}e^{-t/\tau})^2+
+                        (\frac{t \sigma_{\tau} N_0}{\tau^2} e^{-t/\tau})^2}$$</p>
 
 </div>
 </div>
@@ -14626,7 +14645,13 @@ this new hardware.</p>
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>The regular problem of multiplying two matricies $A_{m \times n}$ and $B_{n \times k}$ is $O(mnk)$ because each new element form the matrix will result in the multiplication of $n$ elements (the $n$ elements per row of $A$ and the $n$ elements per column of $B$) and the resultant matrix will have $mk$ elements, totalling to $mnk$ multiplications, and since the additions are cheaper per addition and on around the same rate of growth the time becomes $O(nmk)$. If we have constant time dot products then we can cut out that middle $n$ because it no longer takes $O(n)$ time to get each new element, it is just $O(1)$ $mk$ times.</p>
+<p>(b) we want to satisfy the equation:
+$$ (\sigma_{N_0}e^{-t/\tau})^2 = (\frac{t \sigma_{\tau} N_0}{\tau^2} e^{-t/\tau})^2$$
+$$ \sigma_{N_0} = \frac{t \sigma_{\tau} N_0}{\tau^2}$$
+$$ \frac{\sigma_{N_0}}{N_0} \frac{\tau}{\sigma_{\tau}} = \frac{t}{\tau}$$
+By the percent uncertainty
+$$ \frac{0.01}{0.01} = \frac{t}{\tau}$$
+$$ 1 = \frac{t}{\tau}$$</p>
 
 </div>
 </div>
@@ -14638,23 +14663,7 @@ this new hardware.</p>
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>The regular problem of multiplying $i$ matrixes has a naive approah of multiplying each matrix in order:</p>
-$$ ABCD = ((AB)C)D$$<p>but there might be a more efficient approach since matrix multiplication for an $ m \times n $ times an $ m \times k $ has times complexity $O(mnk)$. If we chain these for say matrixes of sizes $ \{a \times b, b \times c, c \times d, d\times e\} $, we would get time $O(abc + acd + ade)$. But what if $a$ is very large? That would then be a poor choice because $a$ appears a lot in the time complexity. If $a$ is very large and $b$ is very small we would want to then multiple in a different order (which of couse means putting parenthesis in the proper places, not rearanging the matricies).</p>
-$$ ABCD = A((BC)D) $$<p>This ordering would have a time complexity of $O(bcd + bde + abe)$, which has decreaed the number of times $a$ is multiplied and increased the number of times $b$ is multiplied. The actual algorithm is defined recursively by the call</p>
-$$ f(A,B,C,D) = \min\{f(A) + f(B,C,D) + T_{A, BCD}, ..., f(A,B,C) + f(D) + T_{ABC, D}\} $$<p>Where $T_{Q,P}$ is the time it takes to multiply a matrix $Q$ by a matrix $P$. In our original problem these will depend on the three dimesions $m$, $n$, and $k$. The function $f$ also has some interesting cases:</p>
-$$ f(X) = 0 \Rightarrow f(Q,P) = T_{Q,P} $$
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>How is the problem different when the inner product of optimized? Well the multiplication of two matricies no longer depend on the value of $n$ (where the two matricies are of sizes $m \times n$ and $n \times k$), so for any $f(A,B,C,...)$ all the values of $T_{Q,P}$ will be the same, and can be pulled out of the $\min$ statement.</p>
-$$ f(A,B,C,D) = \min\{f(A) + f(B,C,D), ..., f(A,B,C) + f(D)\} + T_{ABCD} $$<p>Since the $T_{ABCD}$ term is only computed once per level of the recursive tree, this is why I think there is a more efficient algorithm.</p>
+<h2 id="Problem-2.--(Bevington-4.8)">Problem 2.- (Bevington 4.8)<a class="anchor-link" href="#Problem-2.--(Bevington-4.8)">&#182;</a></h2><p>The Particle Data Tables list the following eight experimental measurements of the mean lifetime of the $K$ meson with their uncertainties, in units of $10^{-10}$ s. Find the weighted mean of the data and the uncertainty in the mean.</p>
 
 </div>
 </div>
@@ -14666,340 +14675,119 @@ $$ f(A,B,C,D) = \min\{f(A) + f(B,C,D), ..., f(A,B,C) + f(D)\} + T_{ABCD} $$<p>Si
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>On a little bit of a separate note we can think of a simple algorithm that is going to be faster than the naive way of just multiplying. When we multiply with this optimized version we do not have an effect from the $n$, the inner number. That means if we want to minimize the number of multiplications we just want to avoid using that number whenever we can. That means we will just always multiply in a way that removes the largest number remaining. We can find those numbers by sorting the array containing the matrix dimensions, and doing parallel operations on and array of incies that represents the positions of the original array. That means we will get a list sorted in decending order of the dinemsions, and a list of the indicies where those elements originally were ordered so now we can find the $i^{th}$ largest element in order easily.<br />
-<br />
-Next we can just return that reordered list of indicies and you will place the multiplication infront of that numbered element.</p>
-
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>Example:
-Say we have the matricies $ \{A_{2 \times 2}B_{2 \times 7}C_{7 \times 5}D_{5 \times 3}E_{3 \times 4}F_{4 \times 1}\} $ <br />
-And the input is then <code>A = {2,2,7,5,3,4,1}</code>. We sort these inputs into decsending order and also save the locations of the original values in $A$, we do not sort where the first and last elements are. <code>B = {7,5,4,3,2}</code> and <code>I = {2,3,4,5,1}</code>, where $B$ is the sorted values and $I$ is the index locations. So lets add the multiplications to the approprate spots bsed on $I$.
-$$ ABCDEF $$ 
-Multiplication before element 2
-$$ A(BC)DEF $$ 
-Before element 3
-$$ A((BC)D)EF $$ 
-Before element 5
-$$ A((BC)D)(EF) $$ 
-Before element 1
-$$ (A((BC)D)(EF)) $$ 
-And this should be the fastest multiplication. Here is some psuedocode:</p>
-<div class="highlight"><pre><span></span><span class="kd">function</span><span class="w"> </span><span class="nx">chain_matrix</span><span class="p">(</span><span class="nx">D</span><span class="o">:</span><span class="w"> </span><span class="nx">dimensions</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">N</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">length</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="nx">D</span>
-<span class="w">    </span><span class="nx">create</span><span class="w"> </span><span class="nx">I</span><span class="w"> </span><span class="nx">which</span><span class="w"> </span><span class="nx">is</span><span class="w"> </span><span class="nx">just</span><span class="w"> </span><span class="nx">an</span><span class="w"> </span><span class="nx">array</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="nx">numbers</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="mf">1</span><span class="w"> </span><span class="nx">to</span><span class="w"> </span><span class="p">(</span><span class="nx">N</span><span class="o">-</span><span class="mf">1</span><span class="p">)</span>
-<span class="w">    </span><span class="nx">sort</span><span class="w"> </span><span class="nx">D</span><span class="w"> </span><span class="p">(</span><span class="nx">excluding</span><span class="w"> </span><span class="nx">the</span><span class="w"> </span><span class="nx">first</span><span class="w"> </span><span class="nx">and</span><span class="w"> </span><span class="nx">last</span><span class="w"> </span><span class="nx">element</span><span class="p">)</span><span class="w"> </span><span class="nx">and</span><span class="w"> </span><span class="nx">applying</span><span class="w"> </span><span class="nx">all</span><span class="w"> </span><span class="nx">the</span><span class="w"> </span><span class="nx">same</span><span class="w"> </span><span class="nx">operations</span><span class="w"> </span><span class="nx">to</span><span class="w"> </span><span class="nx">I</span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">sorted</span><span class="w"> </span><span class="nx">I</span>
-<span class="p">}</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>Since this is just a sorting algortihm, it runs in $O(n \log{n})$ time.</p>
-
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Problem-2">Problem 2<a class="anchor-link" href="#Problem-2">&#182;</a></h2><p>We have discussed the divide-and-conquer polynomial multiplication algorithm, where each poly-
-nomial is partitioned into the high half and lower half. What if we partition the polynomials
-according to the index is even or odd. Will the divide-and-conquer approach still work? Explain
-why or why not.</p>
-
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>Say we have polynomials $ p_a = a_0 + a_1 x + a_2 x^2 + ... + a_n x^n$ and $ p_b = b_0 + b_1 x + b_2 x^2 + ... + b_n x^n$ and want the product $p_a p_b$. We can split the polynomials into a sum of smaller polynomials.</p>
-$$ p_a p_b = (a_0 + a_1 x + a_2 x^2 + ... + a_n x^n)(b_0 + b_1 x + b_2 x^2 + ... + b_n x^n)$$$$ = ((a_0 + ... + a_{\frac{n}{2}-1}x^{\frac{n}{2}-1})+(a_{\frac{n}{2}}x^{\frac{n}{2}} + ... + a_n x^{n}))
-     ((b_0 + ... + b_{\frac{n}{2}-1}x^{\frac{n}{2}-1})+(b_{\frac{m}{2}}x^{\frac{n}{2}} + ... + b_m x^{n})) $$$$ = ((a_0 + ... + a_{\frac{n}{2}-1}x^{\frac{n}{2}-1})+(a_{\frac{n}{2}} + ... + a_n x^{\frac{n}{2}})x^{\frac{n}{2}})
-     ((b_0 + ... + b_{\frac{n}{2}-1}x^{\frac{n}{2}-1})+(b_{\frac{m}{2}} + ... + b_m x^{\frac{n}{2}})x^{\frac{n}{2}}) $$<p>Then we continue this pattern with each new smaller polynomial until they are all of order 0 or $m$. Then it will be in the form:
-$$ p = (a + bx^m)(c + dx^m) $$
-Where $a, b, c, \text{and } d$ are all of the same form. Then we can take advantage of the following property.</p>
-$$ p = (a + bx^m)(c + dx^m) = adx^{2m} + (ad + bc)x^m + ac $$$$ (a + b)(c + d) = ac + ad + bc + bd $$$$ (a + b)(c + d) - ac - bd = ad + bc $$$$ p = adx^{2m} + (ad + bc)x^m + ac = adx^{2m} + ((a + b)(c + d) - ac - bd)x^m + ac $$<p>Which means we can get the new polynomial with only three multiplications: $(a + b)(c + d), ac, \text{and } bd$</p>
-
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>Above we set it up where we split the polynomial between the $\frac{m}{2}-1$ degree term and $\frac{m}{2}$ degree term, but what if we split it every other term? Lets assume $n$ is odd.</p>
-$$ p_a p_b = (a_0 + a_1 x + a_2 x^2 + ... + a_n x^n)(b_0 + b_1 x + b_2 x^2 + ... + b_n x^n)$$$$ = ((a_0 + a_2 x^2 + ... + a_{n-1} x^{n-1})+(a_{1} x + a_{3} x^3 + ... + a_n x^{n}))
-     ((b_0 + b_2 x^2 + ... + b_{n-1} x^{n-1})+(b_{1} x + b_{3} x^3 + ... + b_n x^{n})) $$$$ = ((a_0 + a_2 x^2 + ... + a_{n-1} x^{n-1})+(a_{1} + a_{3} x^2 + ... + a_n x^{n-1})x)
-     ((b_0 + b_2 x^2 + ... + b_{n-1} x^{n-1})+(b_{1} + b_{3} x^2 + ... + b_n x^{n-1})x) $$
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>Just like with the upper and lower half split, this split gaurantees all the odd terms have a higher degree, and can be taken out to make a value $(a + bx)$ where $a$ and $b$ are of the same degrees. This lets us perform the same divide and conquer method as above, since we are making smaller polynomials with the same degree. It is the same as the higher-lower approach but the distribution of the $x\text{s}$ is larger in the interior than the exterior sections of the polynomial.</p>
-
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Problem-3">Problem 3<a class="anchor-link" href="#Problem-3">&#182;</a></h2><p>The input is a set of intervals on the $X$−axis, which are represented by their two endpoints.
-Design an algorithm to identify all intervals that are contained in another interval from the set.
-The algorithm should run in $O(n \log{n})$ time.</p>
-
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>Lets make a test case and try some sorting to see what we can get.</p>
-<pre><code>               -----------------------
-    --------
-        -------------------
-                          -----------
-                ---------
-                    --------------
-         --
-</code></pre>
-<p>Sorted by first</p>
-<pre><code>    --------
-        -------------------
-         --
-               -----------------------
-                ---------
-                    --------------
-                          -----------
-</code></pre>
-
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>If we look at the &quot;sorted by first&quot; chart we can see that the first element cannot be contained by any other element because nothing starts at a smaller $X$ value. We will record the high value and move on to the next interval. That interval is also not contained by any other, because the high value is higher than the recorded high value. We will record that new high value and move to the next. This one is contained by a previous, since we know all previous will have a smaller low and the recorded high is larger than this one's. No element will ever be contained by another element after it in the sorted list because the low $X$ value will always be higher the further down the list. This is $O(n \log{n})$ for the sorting and $O(n)$ for the search through, that puts the total time complexity at $O(n \log{n})$.</p>
-
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>If we standardize this into a generic list of steps:</p>
-<ol>
-<li>Sort the intervals based on the lower $X$ value</li>
-<li>Save the value of the high end of the first element</li>
-<li>Iterate through the rest of the list<ul>
-<li>storing that the current element is contained by another interval if the high end is less than the saved one</li>
-<li>save the new high end if it is greater than the previously saved one</li>
-</ul>
-</li>
-</ol>
-
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<div class="highlight"><pre><span></span><span class="kd">function</span><span class="w"> </span><span class="nx">contained_intervals</span><span class="p">(</span><span class="nx">intervals</span><span class="o">:</span><span class="w"> </span><span class="nx">list</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="nx">tuples</span><span class="w"> </span><span class="nx">representing</span><span class="w"> </span><span class="nx">intervals</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">sorted_intervals</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">sort</span><span class="w"> </span><span class="nx">intervals</span><span class="w"> </span><span class="nx">by</span><span class="w"> </span><span class="nx">first</span><span class="w"> </span><span class="nx">element</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="nx">each</span><span class="w"> </span><span class="nx">tuple</span>
-<span class="w">    </span><span class="nx">high</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">sorted_intervals</span><span class="p">[</span><span class="mf">0</span><span class="p">][</span><span class="mf">1</span><span class="p">]</span><span class="w"> </span><span class="c1">// the high value of the first element in sorted_intervals</span>
-<span class="w">    </span><span class="nx">solutions</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{}</span><span class="w"> </span><span class="c1">// empty list or set</span>
-
-<span class="w">    </span><span class="c1">// interval[0] is the lower end and interval[1] is the higher end</span>
-<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="nx">interval</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="nx">sorted_intervals</span><span class="w"> </span><span class="p">(</span><span class="nx">not</span><span class="w"> </span><span class="nx">including</span><span class="w"> </span><span class="nx">the</span><span class="w"> </span><span class="nx">first</span><span class="w"> </span><span class="nx">element</span><span class="p">)</span><span class="o">:</span><span class="w"> </span>
-<span class="w">        </span><span class="k">if</span><span class="w">  </span><span class="nx">interval</span><span class="p">[</span><span class="mf">1</span><span class="p">]</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="nx">high</span><span class="o">:</span>
-<span class="w">            </span><span class="nx">add</span><span class="w"> </span><span class="nx">interval</span><span class="w"> </span><span class="nx">to</span><span class="w"> </span><span class="nx">solutions</span>
-<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="nx">interval</span><span class="p">[</span><span class="mf">1</span><span class="p">]</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="nx">high</span><span class="o">:</span>
-<span class="w">            </span><span class="nx">high</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">interval</span><span class="p">[</span><span class="mf">1</span><span class="p">]</span>
-<span class="p">}</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Problem-4">Problem 4<a class="anchor-link" href="#Problem-4">&#182;</a></h2><p>Modify the radix sort algorithm to work for variable-length strings. In other words, you can no
-longer assume that all the numbers have exactly $k$ digits. Some numbers maybe long and some
-maybe short. It is of course possible to pad all the numbers with “dummy” 0−digits to make
-them all of the same length. Design an efficient algorithm that avoids doing so and achieves a
-running time linear in the total number of digits.</p>
-
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>We want a variation of the radix sort algorithm that will alphabetically sort a list of $n$ words with a total of $q$ letters in all the words combined, and a maximum of $k$ characters in each word. We can start by counting the number of letters in each word and adding each word to a stack for the number of letters, which in the worst case implementation of a &quot;word&quot; will take $O(q)$ time, since there are $q$ letters and we want to count all the letters. Then we can pop all the elements in the largest one and so the radix sort section on just the last element. Then add the elements from the next lowest stack to the list being sorted and sort those by the next element. Repeat this until all elements have been added back to the main list and the first element has been used for soting. If each element has $k_i$ elements then they will be part of the radix sorting process $k_i$ times each, so the total number is:
-$$ \sum_{i}{k_i} = q $$
-So the total time for this part is also $O(q)$, which makes the entire algorithm also $O(q)$.</p>
-
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<div class="highlight"><pre><span></span><span class="kd">function</span><span class="w"> </span><span class="nx">radix_sort</span><span class="p">(</span><span class="nx">A</span><span class="o">:</span><span class="w"> </span><span class="nx">array</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="nx">strings</span><span class="p">){</span>
-<span class="w">    </span><span class="nx">N</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">length</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="nx">A</span>
-<span class="w">    </span><span class="nx">B</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">array</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="nx">k</span><span class="w"> </span><span class="nx">stacks</span><span class="w"> </span><span class="c1">// k is the longest string in A</span>
-<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="nx">each</span><span class="w"> </span><span class="nx">string</span><span class="o">:</span><span class="w"> </span><span class="c1">// O(q)</span>
-<span class="w">        </span><span class="nx">B</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">bucket</span><span class="w"> </span><span class="nx">the</span><span class="w"> </span><span class="nx">string</span><span class="w"> </span><span class="nx">into</span><span class="w"> </span><span class="nx">the</span><span class="w"> </span><span class="nx">stack</span><span class="w"> </span><span class="nx">corresponding</span><span class="w"> </span><span class="nx">to</span><span class="w"> </span><span class="nx">that</span><span class="w"> </span><span class="nx">strings</span><span class="w"> </span><span class="nx">length</span>
-
-<span class="w">    </span><span class="nx">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">empty</span><span class="w"> </span><span class="nx">queue</span>
-<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">N</span><span class="w"> </span><span class="nx">to</span><span class="w"> </span><span class="mf">1</span><span class="o">:</span><span class="w"> </span><span class="c1">//O(q)</span>
-<span class="w">        </span><span class="nx">add</span><span class="w"> </span><span class="nx">all</span><span class="w"> </span><span class="nx">values</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="nx">B</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span><span class="w"> </span><span class="nx">to</span><span class="w"> </span><span class="nx">result</span>
-<span class="w">        </span><span class="nx">apply</span><span class="w"> </span><span class="nx">one</span><span class="w"> </span><span class="nx">radix</span><span class="w"> </span><span class="nx">sort</span><span class="w"> </span><span class="nx">step</span><span class="w"> </span><span class="nx">to</span><span class="w"> </span><span class="nx">result</span><span class="w"> </span><span class="nx">at</span><span class="w"> </span><span class="nx">the</span><span class="w"> </span><span class="nx">ith</span><span class="w"> </span><span class="nx">letter</span>
-
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">result</span>
-<span class="p">}</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Problem-5">Problem 5<a class="anchor-link" href="#Problem-5">&#182;</a></h2><p>Let $A = (a_1,a_2,...,a_n)$ be a sequence of numbers. Another sequence $Z = (z_1,z_2,...,z_m), m \leq n$
-is a sub-sequence of $A$ if there exists a strictly increasing sequence $(i_1,i_2,...,i_k)$ of indices of $A$
-such that for all $j = 1,2,...,k, z_j = A_{i_j}$. More intuitively, the sequence $Z$ is obtained by deleting
-some numbers from $A$ without changing the order of the remaining numbers. For example, if
-$A = (1,3,5,7,9,11)$, then $Z = (3,9,11)$ is a sub-sequence of $A$.<br />
-<br />
-Design an $O(n^2)$ dynamic programming algorithm to find the longest monotonically increasing
-sub-sequence of a sequence of $n$ numbers.</p>
-
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>This problem is actually pretty similar to the knapsack problem. The two options we need to maximize between are:</p>
-<pre><code>- If the last item in the set is less than the max, take it, making that number the max going forward
-- Remove the last item in the set but do not take it, kepping the current max
-
-</code></pre>
-<p>And we will start with all the items $A = \{a_1, a_2, ..., a_{n-1}, a_n\}$ and a max at infinity ($m= \infty$). 
-$$ L(A, m) = \max(1 + L(\{a_1, a_2, ..., a_{n-1}\}, a_n), L(\{a_1, a_2, ..., a_{n-1}\}, m)) $$
-$$ L(\{\}, m) = 0 $$
-This is the formula to find the size of the largest possible sub-sequence, and can be easily altered to actually give the largest. Reminder that we can only do the &quot;take&quot; action if $a_n &lt; m$. We can build a table for these values, starting with the empty set and trying with the max set to each value of $A$ and $\infty$, where rows are the current set, increasing in size by one each row down, and columns are the max values. This first row will of couse all be zeros as given by our base case above. The if we call our table $L$ then an element in the table will be given by $L(A, m)=L(\{a_1, a_2, ..., a_n\}, m)$. That means the two possible options for the next step in the recursion are two elements on the row above, one being right above and the other above and some distance to the left. In the end we will have a table full of numbers where the center diagonal represents the size of the largest subsequence, and we can just walk up that diagonal and save each number that is one smaller than the last we saved.</p>
-<p>Here is the algorithm that would give us the table:</p>
-
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<div class="highlight"><pre><span></span><span class="kd">function</span><span class="w"> </span><span class="nx">longest_subsequence</span><span class="p">(</span><span class="nx">A</span><span class="o">:</span><span class="w"> </span><span class="nx">an</span><span class="w"> </span><span class="nx">array</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="nx">numbers</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">length</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="nx">A</span>
-<span class="w">    </span><span class="nx">L</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">empty</span><span class="w"> </span><span class="p">(</span><span class="nx">n</span><span class="o">+</span><span class="mf">1</span><span class="p">)</span><span class="w"> </span><span class="nx">by</span><span class="w"> </span><span class="p">(</span><span class="nx">n</span><span class="o">+</span><span class="mf">1</span><span class="p">)</span><span class="w"> </span><span class="nx">array</span><span class="w"> </span><span class="c1">// n+1 because we want a row for the empty set and a column for infinity</span>
-<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="nx">row</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1</span><span class="w"> </span><span class="nx">to</span><span class="w"> </span><span class="p">(</span><span class="nx">n</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">1</span><span class="p">)</span><span class="o">:</span>
-<span class="w">        </span><span class="nx">current</span><span class="w"> </span><span class="nx">element</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">the</span><span class="w"> </span><span class="nx">element</span><span class="w"> </span><span class="nx">just</span><span class="w"> </span><span class="nx">added</span><span class="w"> </span><span class="nx">to</span><span class="w"> </span><span class="k">this</span><span class="w"> </span><span class="nx">row</span>
-<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="nx">column</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">row</span><span class="w"> </span><span class="nx">to</span><span class="w"> </span><span class="p">(</span><span class="nx">n</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">1</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="c1">// we can ignore the lower left triangle in the table </span>
-<span class="w">            </span><span class="nx">m</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="w"> </span><span class="nx">columns</span><span class="w"> </span><span class="nx">maximum</span><span class="w"> </span><span class="p">(</span><span class="nx">i</span><span class="p">.</span><span class="nx">e</span><span class="p">.</span><span class="w"> </span><span class="nx">A</span><span class="p">[</span><span class="nx">row</span><span class="p">]</span><span class="w"> </span><span class="nx">or</span><span class="w"> </span><span class="nx">infinity</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="nx">the</span><span class="w"> </span><span class="nx">last</span><span class="w"> </span><span class="nx">iteration</span><span class="p">)</span>
-<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="nx">current</span><span class="w"> </span><span class="nx">element</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="nx">m</span><span class="o">:</span>
-<span class="w">                </span><span class="nx">L</span><span class="p">[</span><span class="nx">row</span><span class="p">,</span><span class="w"> </span><span class="nx">column</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">L</span><span class="p">[</span><span class="nx">row</span><span class="o">-</span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="nx">column</span><span class="p">]</span><span class="w"> </span><span class="c1">// the element above</span>
-<span class="w">            </span><span class="k">else</span><span class="o">:</span><span class="w"> </span>
-<span class="w">                </span><span class="c1">// [row-1, row-1] will be the elements on the largest diagonal</span>
-<span class="w">                </span><span class="nx">L</span><span class="p">[</span><span class="nx">row</span><span class="p">,</span><span class="w"> </span><span class="nx">column</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">max</span><span class="w"> </span><span class="p">(</span><span class="nx">L</span><span class="p">[</span><span class="nx">row</span><span class="o">-</span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="nx">column</span><span class="p">],</span><span class="w"> </span><span class="nx">L</span><span class="p">[</span><span class="nx">row</span><span class="o">-</span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="nx">row</span><span class="o">-</span><span class="mf">1</span><span class="p">]</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">current</span><span class="w"> </span><span class="nx">element</span><span class="p">)</span>
-<span class="w">    </span><span class="nx">high</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">last</span><span class="w"> </span><span class="nx">element</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="nx">the</span><span class="w"> </span><span class="nx">table</span><span class="w"> </span><span class="c1">// i.e. L[n+1, n+1]</span>
-<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">n</span><span class="w"> </span><span class="nx">to</span><span class="w"> </span><span class="mf">0</span><span class="o">:</span>
-<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="nx">the</span><span class="w"> </span><span class="nx">ith</span><span class="w"> </span><span class="nx">center</span><span class="w"> </span><span class="nx">diagonal</span><span class="w"> </span><span class="nx">or</span><span class="w"> </span><span class="nx">L</span><span class="p">[</span><span class="nx">i</span><span class="p">][</span><span class="nx">i</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">high</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mf">1</span><span class="p">)</span><span class="o">:</span>
-<span class="w">            </span><span class="nx">add</span><span class="w"> </span><span class="nx">A</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span><span class="w"> </span><span class="nx">to</span><span class="w"> </span><span class="nx">the</span><span class="w"> </span><span class="nx">solution</span><span class="w"> </span><span class="nx">and</span><span class="w"> </span><span class="nx">decrement</span><span class="w"> </span><span class="nx">high</span>
-<span class="p">}</span>
-</pre></div>
+<p>We can use the equations:
+$$ w_i = \frac{1}{\sigma_i^2} $$
+$$ x_{\text{avg}} = \frac{\sum w_i x_i}{\sum w_i} $$
+$$ \sigma_{\text{avg}} = \sum\sqrt{\frac{1}{w_i}} $$</p>
 
 </div>
 </div>
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[18]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="n">values</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.8971</span><span class="p">,</span><span class="mf">0.8941</span><span class="p">,</span><span class="mf">0.8929</span><span class="p">,</span><span class="mf">0.8920</span><span class="p">,</span><span class="mf">0.881</span><span class="p">,</span><span class="mf">0.8924</span><span class="p">,</span><span class="mf">0.8937</span><span class="p">,</span><span class="mf">0.8958</span><span class="p">]</span>
+<span class="n">uncertainties</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.0021</span><span class="p">,</span><span class="mf">0.0014</span><span class="p">,</span><span class="mf">0.0016</span><span class="p">,</span><span class="mf">0.0044</span><span class="p">,</span><span class="mf">0.009</span><span class="p">,</span><span class="mf">0.0032</span><span class="p">,</span><span class="mf">0.0048</span><span class="p">,</span><span class="mf">0.0045</span><span class="p">]</span>
+
+<span class="k">def</span> <span class="nf">weighted_mean</span><span class="p">(</span><span class="n">xs</span><span class="p">:</span><span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">],</span> <span class="n">sigmaxs</span><span class="p">:</span><span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+    <span class="n">weights</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="o">/</span><span class="p">(</span><span class="n">sigma</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="k">for</span> <span class="n">sigma</span> <span class="ow">in</span> <span class="n">sigmaxs</span><span class="p">]</span>
+    <span class="n">num</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">([</span><span class="n">w</span><span class="o">*</span><span class="n">x</span> <span class="k">for</span> <span class="n">w</span><span class="p">,</span><span class="n">x</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">weights</span><span class="p">,</span> <span class="n">xs</span><span class="p">)])</span>
+    <span class="n">den</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">weights</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">num</span><span class="o">/</span><span class="n">den</span>
+
+<span class="k">def</span> <span class="nf">weighted_uncertainty</span><span class="p">(</span><span class="n">sigmaxs</span><span class="p">:</span><span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+    <span class="n">weights</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="o">/</span><span class="p">(</span><span class="n">sigma</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="k">for</span> <span class="n">sigma</span> <span class="ow">in</span> <span class="n">sigmaxs</span><span class="p">]</span>
+    <span class="n">den</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">weights</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="n">den</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">x</span><span class="p">,</span> <span class="n">sig</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">values</span><span class="p">,</span> <span class="n">uncertainties</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">x</span><span class="si">}</span><span class="s2"> ± </span><span class="si">{</span><span class="n">sig</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="n">wavg</span> <span class="o">=</span> <span class="n">weighted_mean</span><span class="p">(</span><span class="n">values</span><span class="p">,</span> <span class="n">uncertainties</span><span class="p">)</span>
+<span class="n">avgunc</span> <span class="o">=</span> <span class="n">weighted_uncertainty</span><span class="p">(</span><span class="n">uncertainties</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The weighted mean is </span><span class="si">{</span><span class="n">wavg</span><span class="si">:</span><span class="s2">.3</span><span class="si">}</span><span class="s2"> ± </span><span class="si">{</span><span class="n">avgunc</span><span class="si">:</span><span class="s2">.2</span><span class="si">}</span><span class="s2"> 10^(-10) s.&quot;</span><span class="p">)</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+<pre>0.8971 ± 0.0021
+0.8941 ± 0.0014
+0.8929 ± 0.0016
+0.892 ± 0.0044
+0.881 ± 0.009
+0.8924 ± 0.0032
+0.8937 ± 0.0048
+0.8958 ± 0.0045
+
+The weighted mean is 0.894 ± 0.00085 10^(-10) s.
+</pre>
+</div>
+</div>
+
+</div>
+
+</div>
+
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="Problem-3.--(Bevington-4.9)">Problem 3.- (Bevington 4.9)<a class="anchor-link" href="#Problem-3.--(Bevington-4.9)">&#182;</a></h2><p>Eleven students in an undergraduate laboratory combined their measurements of the mean lifetime of an excited state. Their individual measurements are tabulated. Estimates of Mean and Errors are tabulated:</p>
+
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAxgAAABzCAYAAAAbpqRgAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAFSeSURBVHhe7d0JnH1z/T/wE/1CZAtR9p1IEVlKKIlQZE9KsiehLKHFvu9LSKJSliKRSrstCZWyVNYQorJv1fmf5+c/n+/juN1Z7nxn5t575v16PO5jZu459855f9778jnnFWWFIhAIBAKBQCAQCATGANMM/AwEAoFAIBAIBAKBqUYkGIFAIBAIBAKBQGDMEAlGIBAIBAKBQCAQGDNEghEIBAKBQCAQCATGDJFgBAKBQCAQCAQCgTFDJBiBQCAQCAQCgUBgzBAJRiAQCAQCgUAgEBgzRIIRCAQCgUAgEAgExgyRYAQCgUAgEAgEAoExQyQYgUAgEAgEAoFAYMwQCUaP489//nNx3XXXFU899dTAO4FAIBAIBAKBQO8iEowexgsvvFB87WtfK77whS8Uv/vd74qXXnpp4EggEAgEAoFAINCbiASjh/Gf//ynePbZZ4tnnnkmJRtlWQ4cCQQCgUAgEAgEehORYPQwXvGKVxSvfOUri//7v/8rppkmWBUIBAKBQCAQGBm6WZjuq6h1slXwJRUSDImGV6A38eKLLxb//Oc/i+eff35SyejTTz+dXjptgcBkQRN1/N///nfa5/f4448X//jHP1728n6TdRxtTzzxRPGXv/yl+O1vf1s89NBDjbdppiJuu+224tprry1uvPHG4t57723UCPZ///vfJNPtYCrE3tYHH3wwTYY0DeKR++67L9GIvnaxI/7ffvvtxcMPPzzwzvjgFZWxHJW1JJDXXHNNUkzKOOussxbLLrtsMlCve93riiWXXDJV3scajACloAxzzjlnsdpqqxWzzz57Iyv8gtbdd9890XzYYYcVq666avGqV71q4GhvgizceuutSbnJwEwzzTRwpJm44447im9961tpjwx5fPvb316svfbaSQeaKJPMxd13311cf/31xS9+8YuUVJHL97znPcUCCyyQEuLJAA5MMPLII48USy+9dDHffPM1jt+c0x//+Mck45wW4D+dXm655YpFFlmkmHbaadP7TQU/c8899yReW4MVV1yxWGKJJQaONgN0+Je//GVx0UUXFY8++ujLdJicv+Y1rynWW2+9YsMNNyxe/epXDxxpBiRQP/jBD4of/vCHKbHga1//+tcXH/nIR4qNNtoo2fSmAY/t7TzjjDMSf73mmmuu4mMf+1jxoQ99qJhxxhkHzuwvsE0KXjfddFNx9dVXJz3FwxyHiknuvPPO4stf/nLx4x//OMWs66yzTuI1+93PQLvE6a677iquvPLK4pvf/GYxwwwzJB6/6U1vSuewX/fff39aA7r+k5/8pNhqq62KI488Mh0fF1QX1jFuvvnmcoMNNijnn3/+costtih33XXXsiKirBxtOfPMM5c77rhj+dhjjw2cPbb42c9+Vi688MJllZWVc889d/nd7363fO655waONgtVFlpWjjytLborhz9wpPfg2n7zm9+UBx54YLnooosm+agCk4GjzcSNN95YrrnmmmVlwCTp6VUFXOV2221XVo5q4KzmoHJEZWWYyyqBKqeffvopNKN/0003Laska+DM5sM6VIlVWQVfZZX8l48//vjAkeagSi7KjTfeeAqf82ueeeYpTz755PKZZ54ZOLOZuP3228sDDjgg2eDFFlus/OQnP1n+/ve/HzjaHDzwwAPlvvvum3x3K6+9+NptttmmrJLpgU80A1VyUZ5++ulllSgnHp966qnlUUcdVS644ILlQgstVJ522mnJ5jUJVXKRaJxjjjnKlVZaqbzkkkvKE044IdEsrrIG/abXePTwww+X5557brnJJpuUCyywQJJlfrgus+KRKuEoq2Sq3HrrrcsqmSqrJKP8+Mc/Xj744IMDZ/UnyDLe4WPW2yWXXLK89tpr0/Eq8SovvfTSKT7L8SqRLKvkalxlvOOS21//+teiCiLTrVNPOeWU4qtf/Wr6efHFFxerrLJKqmBrqcqWqu9Pn1F932effVJ3Y2qxxhprFJXTS1UV3587KGMN333ssccWlYMZ9zbSYNDaUiHs9fEoVb7zzz+/qBxwccwxx6QqUNPb6lUyVXzxi19MFQGVe/KIT2iukt5UHXjyyScHzm4GqkAkVfve8pa3FF//+tdTd60KNhP///CHP6TK2GSAanYVfKRKWR4raVqrnRxroave51FNL7/PO++8SeZ7vZs6NdAl32OPPZI9Q++XvvSl4ogjjkhd+qbh73//e/GnP/0p2Sv8VfH1yvzG6+WXX75x3WjduW984xup6qtr8e53v7t43/vel+IYdv2yyy4rqoRy4Oz+B502XcBXm47QZV955ZVTTLXUUkulqZQqSC9uuOGGgU/0B3TgVOV1Jeit8SByyz7l2Am9ulRXXXVVMffccxdVUlHsvPPOqcp/xRVXFOedd17qAPQr0KvzpCuTOzZQjx2nm266okoii1lmmSX97dh4Txx0nGCY1yOAAvAqS0yEwWKLLVbstttuxfzzz58YnoGpJ598cmpZDeaEcyIyUsw222xTAu+RBOAj/f58np8MjwRDIlWnJ9Aea621VlJYzgg/yMVwfOlnGBOirBdccEFx8803FyeccEKx6KKLpmMcteDsX//6V/q7KWCwN9tss2KvvfYqPvjBDyYjvdJKKyXD1WRe1yF5PvHEE4sf/ehHU+Zbmyjrzz33XJLhhRZaqDj++ONTQnnmmWemxEqgvfrqq4+7c+oGjFHg7Wc/+9kUsGywwQapQMa+CUaaCPbKqJDCwUEHHZSSKUXD7bffvnjDG96QxkeMxDVpPMpYkJEoc+oguBbbZH0GP/PvTQB/pCgiGAcJh0IwGumyNVEsUVToJ0w//fQpKfzc5z6Xxvha7ZJ4TtJx6aWXJhqNdkqu/C5+JPvG/SXa/QpJg/E2sTadbYXkwzgYW24UbqLQsfbkzgSmqFifffbZ6XfvMUKHHnposeWWWyaCVHE//elPJ8ZxxgTXjJxk4+ijjy4OP/zwpNQqoAJ5juvggw9OGXb+Ti/z7aeffnqqGDN8qseuAxzPsHHlpz/9aUoMOAXZqqyU0fC/BYG+/ytf+UqqTPg/+e/cXfG955xzTvH5z38+zVczPLozqrdNrshPDWTMEktBx5vf/ObGzem2gsyp+ghCVDR1Lxg4c6zAaEm+m1bhZZTNoGc6dQ/pDZ1ZZpllUjejicg25rHHHkv7bQQm5L2pASfo2qri4i87iNZ111232HHHHVOwnatgTYOqtgDbngSOmlPOM8xNhaKQbqQEcv/9908ByEc/+tGUcJB9su6cJkFQbe+majbYZyS+YNN//etfFwsuuGDxgQ98oFEdK91WgXaOnfgpLzwWbINYTBzVTxDfiUH4XMlwq10Wc+qw61RBLgah20tsKr5j1/sZeCnu9rMdcvI8kfFZxwmGTU8yRhcrSNe1MLIkSMdIm2o22WSTJLCcscBeYM5wSxLs3Pc5G0sosyDf55xv3MpD5Si681WTLr/88mK77bZLBtAxP72X21lZWCQkqi9bb711+k7tTYby1FNPTYGQJEflUZa70047Fdtss03xiU98In2nSqyEJyc1Knccq2uS9evYRIIxPPArG6omg8wJsgXcOYlAN9kBwRfHpF3ZVNBhyb7kn0FXXLAeTQR+c7wXXnhhqgDaFKiy3eRE2h1mdOZs5FesEXCypzp2TevMZfBDRiyMwAGfwWfp2vEbZD3reJMggRBMv/Wtbx14p0jJ5a9+9atky9Zff/3UyWoa2KwPf/jDKZHEV90MVW4TC2KCzTfffODMZsDkx+KLLz6lws+mSTYEnXmsRnKhqJoLrv0EPBws/kBjDryd16rHunjGBPsZaBKDtdLWiomMYztOMFQwc4cCEMQJqWxJLLSXKajgSjXb+AT4XTdDe0plJL9PoAmFu+94CVbyQmnTq6rIPlUb7HzX/XjXu9415fOExucPOeSQVHkya6f7ILGgNJIO16e6qhKVkyMBoADJiAeFkyD5bt+lGpuDB0aXg11hhRVeNtsW+F+0U9zJAqMzElmgB/SErDURnNJ3vvOd1C1UFZPsG6ExDunvJkKwxY687W1vK9Zcc82UWGZDzZ7kQkdToIOhY5PBrro7iT1pxkf93TRIMBSXBNdsvbFf3cmf//znqdu+5557Fj/72c8Gzm4OWmWXDzRGc8stt6S9CUZBmwjF0ve///3Fe9/73oF3/j8klnRdQtkk8EfioNe+9rXJdrFpCqymSHLRwD4b/HZOP2K08Yd4U5IRReSxRccJhjYUJ6Oa5fcMjBFgmAPTPZAcqH7IHEGCQLgF817ZqEkQWg2cz3hJLCi5FpbNSG6H6cXJ5+DN5xlCiQ0HoRohwRHsaX/6rFEt3Yn8f12X2+6p2rgm38Go/O1vf0uCljN88LtkhsNpWhARGBuo+OjW+WmMJFfFmgo6oaqpE2hzIP0RmAlAdfqaBl1XxQ32hM1gP9gYgRiHxsawG02CTb3kWDFJQpW7UxLpSy65JNnmpgEvM0/Z/E033TTd5tFPCaUNsm7PnAsJTYXqtTFkPlEhrqkJhhhFIsV20Wk2m22j20bkjEp36wYv4wEy7bb+RtvdWpvNsrnZhAh6QYFXrNY00Omhkg/xnXiWLwuMHTpOMIAyGmPidLWP6zNvql4qPpS3DsKcGcyIt0MWAsmFhEXikL/He9mp1wN9vzMCzvNZc3b77rtv6qgYZ9AGhOw4Mnx//n8Z7RKI+vFAoB0EXMboBCInnXTSlK5YU0EXdfaMjegQ6kiiVxLfz3fiGAycr24NHut6Gq383ve+N4VWx40TNSnJwN+8H07yvN9++015/oNqJ143LalqBX8g6DAOqaPNt+GzOfYmA318Jz2XXMwxxxwDR5oFSZTOlHFsnQxxg0kLyHtG89x+U6AjxX7RaZ1Io+GKtuIjNpysG5lrIsRydFoS0ZpI0HPP7ep3tIthu4mOEgzjTDZx29hNGD1cy4yqu224nZ9uAAI5Y+0mTByOYEYsw7n181WN8t++K5/rZ/281iTAPhAjUm6pyfnvvffeKSuvn9cucRjuWgMjx2RYS07orLPOSsGmzp3KkDlXYxTHHXdc3890toOgMhcI6CRdc2tHdNPXVsPdBLA3XhIMdkVl06ZQRQpyrhBCBozWNAVoy0UhQYdulZtkuJEDHjeRz+QXrXnvFNqtQy5OedXlv4kw4miTs0RKldvkQBOBhzb1stE2dLv70A477JD2hhrBxndr0cT9RsbbdaaMhvmpcKuC70YlCgn1vTj9BLaYXfIz/85uG/tCp7s84qtidN574jydHZvD84b/fkZrXIvGoZDXarzQUYKBKUaWOBrjIJglcJcBy4rzxkcGmrHOhhnqhNYXAbOzwc4ODcE+b/wi77VwJ5N8jNL7376TYhCMvLcCvEdJtPbt6+A0suCBn/l68nt11K8vj0Y12amMFayVxNN66Rw1ec0k25IL+3MksfYKGRsiswy3+4nXZ9j7HZyQfRduspDvtMIe4DEdVgF65zvf2cjqFzviznSCj8985jPFrrvumvZzsSFshcqXLo7Obr+DXbXR2d2E3HZaR85YFDuMt6rZRkk8G6JpXTqBiE2wedOvAgI7hs9smrl0fG5qhReMAxoDo9vveMc70n7EpkKMIW5QDBVfiBEUSfPYtLHApvIan02hmEBxQwfPAOHL+K4cc/Ub+CJ+Km9eN+pHh+kuProZEdp0pdi0/BnFMWP3/XyTEvZKTOLmK7rL+b3WLrNtBEY9ofW4v8ca037BLp8RAvOMP7lnMKMrK2SUMZCS2mStrajaxThJQr7//e+nUQLGGXMRT3k93ESiIAjz0x4KHQfHVQ4kLQIWi0EgPHfA/7IxSWvPfKgFdfs8FVTnqCoSLL/7Xm1egZ9F9FkBkiqjc8wi2nCeZ+cJmu8ROGiZ6spgBofruOBBIiOInihYU9eH8RRflm3tehUqvK6X8SITnDH+MORNAn5ILnTtjBP4myzmDc9kRuXPPh/JbRNAFt1j22ZuNoCBVkywGdLeK7rjzmxNqALVgbdsB1vBZqy99top6GJrOGa8th/Ny6bRfgf5NfJHvvFW8swG21ujM21zt7vrKNxMpC2cCEiY+AZFNHtM2Ft3T1LNZ9tU9N2lkN9rItAuuXBbdnZrq622mjIW1zTwT2IY49Vuke8BwiBmECeIV+xNYMObAraMfpNncRE9NzLFbpvysO+qH8EGizncXdRd7sR4kgzJhcTCmJ8CmBhOLGfPjeN+4j19dgOHft43ia/2QBprtRZAnz38Fu1smZFAz8Gg37kTK94WSzs+HqOQHSUYmMLJyJI4Hb8LNFyg2WQOSXLhCai6GAIQ4wOU1zlu/6dCZLTK3TkE8hwXZ527EITF7eMEaCqD7t6klSlxcZcnwiNREdBZQAvlvuzae76LAHGCHALnKDCwUVHwJzERKKGD4dR9kdj4fgbHub7HTxv5bABzTIVWd4awTmSA3y8JhsTTA7hUOymt68UXt/3DV9fdpCSD3J133nmpik9u0CbYygEX52SDrICUDjQB9lnRabpMJyRWbIAqESfMSTWx2oe/rSDvRivIuqTCxu/6nfH6GWTZix31YvsUdzhi9ln3RjJZ7xg3CZwsh8xJSzIUtASdgpNtt902dSnrew6bBAEHveaz+Wnjj3lcrInAawVFBQQxiEIJXntPB4/Pb4JOZ/DL6JRc6Nh4YOqnPvWpFI9JNPoV/DFb7GY+dFMByIs/Mg4mBmGn6bBxOIUhcR8b7m6POjk6GP0MxXCyK84WM6NfYkWnxbmSKHG7c8S39hopmOjaiKX9Ph7++xWV0HXUF1HhkPVzLjIiPyULLtJYkmA/38IWEITxhEDwLujinAT5kgWZF6HQcvcduhmMGqXn6Hy/9zg7Ts6tA71ypdh3yTx9h/NUV1WgfJbw2HDLYfhuwZHP5LaY68YQma5l8D+1R3MCI9NzZykjEt0IIFyv4MU1G0vT1UFXr0EyIdGUxOGHypA1FpxYz4nu/Iw3yAq5kMiiE70ZjqmEopnc1Y81ARxT3uCL9tzZw/fJBAWIPFaB/rrN63fgK7uYC0n+5oDYQA6paTLdCrKt8ifQFpChmdPOAUuTwa8qGvB1AvCm8xoUDPCbPUcvnzUe1dxug28S16BV4YvdagLQhYdkN49o5/fZLrTm2I1uk2/+G6/xuZ+Tqwy0imPzSFgdYq8ccztuTern+N3x8YjROk4w2kEAXK+s+8pWIusY7njg/6MfEoyR8DL4HQgEAoFAIDB5MCblidaxneGCyQg2m4OR8DL4HQgEAoFAIDB50Pz+ZyAQCAQCgUAgEJgwRIIRCAQCgUAgEAgExgyRYAQCgUAgEAgEAoExQyQYgUAgEAgEAoFAYMwQCUYgEAgEAoFAIBAYM0SCEQgEAoFAIBAIBMYMkWAEAoFAIBAIBAKBMUMkGIFAIBAIBAKTGGPwzOVA4GUYkyd5B8YH+UneWHTKKacUK6644rg8zj0QCAQCgcDkwPPPP1888cQTxfTTT1+8+tWvLqaZZpr0wOQXXnghvWaeeeaBMwfHf//73+Lf//538apXvWrgnebiP//5T/HUU08VTz755KR7cPArX/nKYrbZZkuy0ilGnGA4LS8s4bzrrruKOeecs5hjjjmScHaChx56qLj//vsT03znYJfQeqyTc+sY6pj3Ldyiiy6aBOi1r31tMcMMM6TPdBuPPPJIscEGGxT//Oc/i9133714y1veMoWWoWhqxWjXpn6MMSFks88+e+Lfs88+m/j/mte8JhmoF198MSVEc889d3oxUs8880z6TDcM0O233148/vjj6Xd0DIaxWJtWjPZYhuOM/eKLL57W22cefPDB9JO+jfV64i19fPjhh5NOZowHjaM91or6uX7PNggt0HocZpllluQ46RMdf8Mb3pB+dgqyb73+8Y9/tL3eoegYj2OtGM//76e1ts7Wjiw+99xzxUsvvZSOeZ89XWCBBZItBcfuvffeZM98tt3/8FmyhzeCFnZjuummm3LuSK5tMLQeH+13jcexDOdYGy/yZb3ovPXMa2atrbn19J7PsLGOeVkva/66172umHXWWdP3/v3vf0/ns8lsSr4On+Xv7r777mSr+T+fzfrTDqOlcayOtTvXOqDvvvvuK+6555503HnjhbzuGfl6xvN/1uH/4SM/oNhIRkYC5/LTdJXMPPDAA0nG+G+6NtNMMyX+W0fHyQM9bl1vQCsdZf/EguStrqvdQF7/zH8vv+dryu/l8+rIn2mH/D5dufPOO5OPHOzcJsLakJ3VV1+92GWXXYp55pln4MjI0FEHg1M95JBDittuuy0FmYKfueaaKyndSIAx/t1jjz2WhHMoYzZRcD2UQ7DBsAtCKN1QEEyjWWbHuHGMaPFdeS2mljbf43puuumm9JNBGU0wNFZAj3WxPpwWw4L/jJb1syaMHWNFCGX6Tz/99JSAuAMxmyqQMTzJSVA/IsvRvPPOm9bc2qPHT0md9R4r5PWik3g2tXLbDVgv8ucnWUMTB8gRW0fH0DjjjDMmeeUsOM+cYHQim76bXFkvjngyIa+rtfQ7x2O9vcceAFvofbIrYHGeAPbRRx9N6z4YnOezzvF9EkHfM1mAdnJK/6wv22ndhoI1a5Vd/JBcZB/2r3/9K30fXtQTDCDHijD+J1vOtveb/me5kZiidbIg695ks0HdBnmbbGA3FLfPOOOM9LMTdJxg7LbbbsUtt9ySBJwxotwjhfNd7DLLLFMsvfTSKUDvBVgCTi0b7KFoErCojgtW5p9//tTJ+dvf/pbajZyCAJCj4Ch912gF0udy4Mc5rLXWWsV8882X/n8HLBtTZH7jm+vzt5ffBRgqlNZAJyO3EjuRj7EAPqrGrLbaalOy7W6t19SAnnCaN9xwQ1rXvOboG0vgn/WikwsttFDS635aL/ogEGOT/FxuueUSDWyV4odA9fe//32q1Oa1yzrk705oda6XpNn/ef3rX5940k/rNTUgkxJd9o/MWG9raZ0VjOi+oFXQQ+/zCw9WWGGFYsEFF0zyNhR8X7Ytk2Vd0as4Q07pvARhnXXWKVZdddVUaZacOQda1yS/D45lm5zXD88GW0/v1+0KXtW/rx+ALoG2eOJNb3pTuv5Mp58jpWe4cx0j17feemvqlChQ5CSYn+bv+P2JWr86f0cC52YaXTNdXGqppUZUYBlqberH8ve0O7f12Ei/cyRwvkSZ7vD55JjPZJcUPIFtUqylZ2TeZ9gaPPS3OGuo/+m8ZZddNhWlMi0wUjqGOw9GQvNQ39OKTq4N2p2bjynM8XfkvhN0vAeDYGPg1CAbtX6FNSCcYPmysnvl4KXDZf0fWCMtzI033jj9fdJJJxUrr7xyMg69ikyz9fDqFshWdqz9Dro23mvZhPXKNikHqFkW/W79ptZm1eF/5P8z2WBdrWdeYz+thff8nV91OKcp+jheyOua1zbWKxAI9Dtik3cPQ7Vwww03TMFRPyQYgUAgEAgEAoFAZ7uzAxMKiUWuCObfA4FAIBAIBAKBXkYkGIFAIBAIBAKBQGDMEAlGIBAIBAKBQCAQGDNEghEIBAKBQCAQCATGDJFgBAKBQCAQCAQCgTFDJBiBQCAQCAQCgUBgzBAJRiAQCAQCgUAgEBgzRIIRCAQCgUAgEAgExgyRYPQw8vMvPNE1nuoaCAQCgUAgEOgHRILRw/DU7tlnn7147rnniqeffrr473//O3AkEAgEAoFAIBDoTUSC0cN4zWteU7z5zW8uHn300eK+++4rXnzxxYEjgUAgEAgEAoFAbyISjB7GK1/5ypRkTDvttMVLL72URqZ6Gb1+feMBSV90lgKBQK+DnarbqmyvX3jhheKJJ54onnzyySkvfz/11FPJ7/Qr2OZ//etfiY56ca7up9D+0EMPFffee286b6QwVfCXv/yl+M1vflPcddddxfPPPz9wpD9g9Hq0BUsyRD4UPrvh+1z7M888k3jr51ji3//+d/HII48Ut9xyS3o9+OCDA0d6L75xPYOtv/fJ82OPPZZkdaSg7/fff3+i/Y9//GOyBVODV1QXOe6r9vjjjxczzTRT8apXvWrQvQQu4+abby7mnnvu9BJUT3YQjEMPPbT40pe+VBx44IHFRz/60WKWWWYZODr+ePbZZ4s//OEPxV//+tf097zzzlsstdRSKekZjI8PP/xwUtCFFlqomHnmmQfebQ8GgiCTD9+34IILpu9/9atfPXBGd+D6Kdc//vGPYrrppisWWWSRYuGFFy6mn376gTOK4p577il++9vfJgdjjO0973lPscQSSyQZHwqM+t/+9rfk0GaYYYZiySWXTOtE/ru5z4aTRTOeWP9FF120WGCBBV5GMzBYd9xxR/H3v/99SgKM1/PMM8+wtIM1veqqq9L439vf/vZirrnmGjjSHRg9vPPOO5NRxQN04ONss802hR+MtQ7i7bffnhwafi2++OJJH9AxFKynz9EL60Oe5ptvvrZrOxHAPzotOMA/OocW9rkdrMkDDzyQ1ukNb3jDoDpNh2+77bYkF3U59nly7n+g2f/sBjhOgSBeCypnnHHGJLderi+Dbt56663FP//5z6QHdN8L34YCOtlJayDYdD5b7bOve93rBs6aeLiWu+++u7j++uuTzULv2muvnWQQn7z3ne98p7jpppuKaaaZZgrv0EMm3v3udxfrrrtuWq86HHeu9eK3yRU7uOyyyyaZ6ib4rRtuuKH49re/nXjCRpG/ddZZJ00E4A2dZu/OO++84mc/+1kKxt73vvcVH/vYx4o3vvGNL5PhOrI++O5LL700BaDo3mqrrYoPfehDxRxzzDFw5sQDDWwNW0bPXv/61ydbVo8Z2N9f//rXxe9+97uk029729uKt771rSnmGin+/Oc/F6effnpaw3333bejz04t6OUPf/jD4rLLLkt6zF6Tz3e+853/Y8Mcx3/rws/W9bwdfPeVV15ZfPe73012gu7Ql0984hPpf9CPXgC6yO7Pf/7zYrHFFktyW782fHXspz/96ZTCND1+73vfO6TPYcO/+c1vJv/MX4k/V1555WLPPfdM6zcqVP98XFExrDzggAPKSujLKvMceLc9Tj311HKnnXYqK+aWVSY58O7kRWUoy/3337987WtfW55wwgllFawMHBl/VAFIuffee5eVsS2rILCsAqly1llnLT/3uc+VlfANnPVyPPHEE+Uee+xRrrDCCuU111wzKL+9/+Mf/7j84Ac/WFYKXFbOq6wUpKwCkPLss8+eUDpbUSUM6boqw5yui4pUzqmsFK+sDFU6p3JeZZVQlJWjSse9rNNXv/rVsjJS6Zx2QNfRRx9dvuUtbykrY5fWc9ttt03/s0o8Bs6aePziF78oN9xww7JKKsrKGSd6KkdcVoa2rIzMwFllWRnrpJ+uO9NdBU/liSeeWFaOa+CsofGtb30rrdVGG21UVgnawLvdARn/whe+UC633HLlnHPOmWS8SizKz3zmM2WVAKZzKgNdVoFE4vf8889fVk6srIKPco011iivvvrqdM5gqILt8tBDDy2rYG7KellfOl0ldANnTRwqp1TusssuSefIn+upHEd55plnDqpzVTJZVoFTuf7665fXXnvtwLsvR+WIyzPOOKOsgukpdNZfVdBVHnnkkeWTTz458ImJBZ388pe/nGSaLc3yu8wyy5Tnn3/+FN277rrryi222KKsEqmySi7SOSuttFJZBZPJFg+GKtAqb7zxxiTT00477RS6q8Ct/N73vpeOdwOu+cILL0z2Jl9TFWCUVaBdVsFHWQUi5fHHH19WAfKU4/WX98kqu96KKtEur7jiinLjjTdOurHNNtuUK664YrnaaqsleaqClYEzJxbkmA9xHa5txx13TLaczm6wwQZlFRyn2IINx+ulllqqrILsKTr69re/fUi9vu+++8pPfvKTyVd9/vOfT35ut912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" alt="image.png" /></p>
+
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>Find the maximum likelihood estimate of the mean and its uncertainty.</p>
+
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -15007,45 +14795,39 @@ This is the formula to find the size of the largest possible sub-sequence, and c
 <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[9]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Here is an example and the python code to generate the example</span>
-<span class="kn">from</span> <span class="nn">tabulate</span> <span class="kn">import</span> <span class="n">tabulate</span> 
-<span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="n">inf</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">taus</span> <span class="o">=</span> <span class="p">[</span><span class="mf">34.3</span><span class="p">,</span> <span class="mf">32.2</span><span class="p">,</span> <span class="mf">35.4</span><span class="p">,</span> <span class="mf">33.5</span><span class="p">,</span> <span class="mf">34.7</span><span class="p">,</span> <span class="mf">33.5</span><span class="p">,</span> <span class="mf">27.9</span><span class="p">,</span> <span class="mf">32.0</span><span class="p">,</span> <span class="mf">32.4</span><span class="p">,</span> <span class="mf">31.0</span><span class="p">,</span> <span class="mf">19.8</span><span class="p">]</span>
+<span class="n">sigma_taus</span> <span class="o">=</span> <span class="p">[</span><span class="mf">1.6</span><span class="p">,</span> <span class="mf">1.2</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">,</span> <span class="mf">1.4</span><span class="p">,</span> <span class="mf">1.6</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">,</span> <span class="mf">1.9</span><span class="p">,</span> <span class="mf">1.2</span><span class="p">,</span> <span class="mf">1.4</span><span class="p">,</span> <span class="mf">1.8</span><span class="p">,</span> <span class="mf">1.3</span><span class="p">]</span>
+</pre></div>
 
-<span class="k">def</span> <span class="nf">max_len</span><span class="p">(</span><span class="n">l1</span><span class="p">:</span><span class="nb">list</span><span class="p">,</span> <span class="n">l2</span><span class="p">:</span><span class="nb">list</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">:</span>
-    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">l1</span><span class="p">)</span> <span class="o">&gt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">l2</span><span class="p">):</span>
-        <span class="k">return</span> <span class="n">l1</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="k">return</span> <span class="n">l2</span>
+     </div>
+</div>
+</div>
+</div>
 
-<span class="k">def</span> <span class="nf">longest_subsequence</span><span class="p">(</span><span class="n">A</span><span class="p">:</span><span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">]:</span>
-    <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
-    <span class="c1"># L = [[&quot;&quot;] * (n+1) for _ in range(n+1)] # initialize the empty table</span>
-    <span class="n">L</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="p">(</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">)]</span> <span class="c1"># initialize the empty table</span>
-    <span class="k">for</span> <span class="n">row</span><span class="p">,</span> <span class="n">curr_elem</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
-        <span class="k">for</span> <span class="n">col</span><span class="p">,</span> <span class="n">m</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">A</span><span class="p">[</span><span class="n">row</span><span class="p">:],</span> <span class="n">start</span><span class="o">=</span><span class="n">row</span><span class="p">):</span>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>I will use the same functions as in Problem 2.</p>
 
-            <span class="k">if</span> <span class="n">curr_elem</span> <span class="o">&gt;=</span> <span class="n">m</span><span class="p">:</span>
-                <span class="n">L</span><span class="p">[</span><span class="n">row</span><span class="p">][</span><span class="n">col</span><span class="p">]</span> <span class="o">=</span> <span class="n">L</span><span class="p">[</span><span class="n">row</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="n">col</span><span class="p">]</span>
-            <span class="k">else</span><span class="p">:</span>
-                <span class="c1"># L[row][col] = max_len(L[row-1][col], (L[row-1][row-1] + str(curr_elem)))</span>
-                <span class="n">L</span><span class="p">[</span><span class="n">row</span><span class="p">][</span><span class="n">col</span><span class="p">]</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">L</span><span class="p">[</span><span class="n">row</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="n">col</span><span class="p">],</span> <span class="p">(</span><span class="n">L</span><span class="p">[</span><span class="n">row</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="n">row</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[16]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">avg</span> <span class="o">=</span> <span class="n">weighted_mean</span><span class="p">(</span><span class="n">taus</span><span class="p">,</span> <span class="n">sigma_taus</span><span class="p">)</span>
+<span class="n">avg_unc</span> <span class="o">=</span> <span class="n">weighted_uncertainty</span><span class="p">(</span><span class="n">sigma_taus</span><span class="p">)</span>
 
-        <span class="c1"># L[row][n] = max_len(L[row-1][n], L[row-1][row-1] + str(curr_elem))</span>
-        <span class="n">L</span><span class="p">[</span><span class="n">row</span><span class="p">][</span><span class="n">n</span><span class="p">]</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">L</span><span class="p">[</span><span class="n">row</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="n">n</span><span class="p">],</span> <span class="n">L</span><span class="p">[</span><span class="n">row</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="n">row</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
-    
-    <span class="n">high</span> <span class="o">=</span> <span class="n">L</span><span class="p">[</span><span class="n">n</span><span class="p">][</span><span class="n">n</span><span class="p">]</span>
-    <span class="n">solution</span> <span class="o">=</span> <span class="p">[]</span>
-    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">reversed</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">)):</span>
-        <span class="k">if</span> <span class="n">L</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="n">high</span> <span class="o">-</span> <span class="mi">1</span><span class="p">:</span>
-            <span class="n">solution</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
-            <span class="n">high</span> <span class="o">-=</span> <span class="mi">1</span>
-    
-    <span class="nb">print</span><span class="p">(</span><span class="n">tabulate</span><span class="p">(</span><span class="n">L</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">A</span><span class="o">+</span><span class="p">[</span><span class="s2">&quot;INF&quot;</span><span class="p">],</span> <span class="n">showindex</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;EMPTY&quot;</span><span class="p">]</span><span class="o">+</span><span class="n">A</span><span class="p">))</span>
-    <span class="nb">print</span><span class="p">()</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The solution for the longest sub-sequence is </span><span class="si">{</span><span class="p">[</span><span class="n">x</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="nb">reversed</span><span class="p">(</span><span class="n">solution</span><span class="p">)]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-
-<span class="n">longest_subsequence</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">0</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The average value of tau is </span><span class="si">{</span><span class="n">avg</span><span class="si">:</span><span class="s2">.3</span><span class="si">}</span><span class="s2"> ± </span><span class="si">{</span><span class="n">avg_unc</span><span class="si">:</span><span class="s2">.2</span><span class="si">}</span><span class="s2"> s.&quot;</span><span class="p">)</span>
 </pre></div>
 
      </div>
@@ -15065,24 +14847,7 @@ This is the formula to find the size of the largest possible sub-sequence, and c
 
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>         1    5    6    2    9    5    6    7    3    4    8    9    0    INF
------  ---  ---  ---  ---  ---  ---  ---  ---  ---  ---  ---  ---  ---  -----
-EMPTY    0    0    0    0    0    0    0    0    0    0    0    0    0      0
-1        0    1    1    1    1    1    1    1    1    1    1    1    0      1
-5        0    0    2    1    2    1    2    2    1    1    2    2    0      2
-6        0    0    0    1    3    1    2    3    1    1    3    3    0      3
-2        0    0    0    0    3    2    2    3    2    2    3    3    0      3
-9        0    0    0    0    0    2    2    3    2    2    3    3    0      4
-5        0    0    0    0    0    0    3    3    2    2    3    3    0      4
-6        0    0    0    0    0    0    0    4    2    2    4    4    0      4
-7        0    0    0    0    0    0    0    0    2    2    5    5    0      5
-3        0    0    0    0    0    0    0    0    0    3    5    5    0      5
-4        0    0    0    0    0    0    0    0    0    0    5    5    0      5
-8        0    0    0    0    0    0    0    0    0    0    0    6    0      6
-9        0    0    0    0    0    0    0    0    0    0    0    0    0      7
-0        0    0    0    0    0    0    0    0    0    0    0    0    0      7
-
-The solution for the longest sub-sequence is [1, 2, 5, 6, 7, 8, 9]
+<pre>The average value of tau is 31.3 ± 0.44 s.
 </pre>
 </div>
 </div>
@@ -15098,7 +14863,11 @@ The solution for the longest sub-sequence is [1, 2, 5, 6, 7, 8, 9]
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>In the above table for a run on the set $\{1,5,6,2,9,5,6,7,3,4,8,9,0\}$ you can see that the bottom element is the longest sub-sequence. Since we are just bulding half of a $(n+1) \times (n+1)$ table it is $O(n^2)$.</p>
+<h2 id="Problem-4">Problem 4<a class="anchor-link" href="#Problem-4">&#182;</a></h2><p>In an experiment to determine the energy of a gamma ray source, an experimenter makes $N_1$=44 measurements with the apparatus and finds a result $\bar{E}_1$ = 1.022 MeV with a spread $s_1$= 0.010 MeV in the observations. After looking over the data the experimenter realizes that he could improve the equipment to decrease the uncertainty by a factor of 2.5 ($s_2$ = 0.004 MeV) so he makes $N_2$=12 more measurements that yield a result $\bar{E}_2$ = 1.018 MeV.</p>
+<p>(a) What is the uncertainty in the mean $\bar{E}_1$ in the first set? <br />
+(b) What is the uncertainty in the mean $\bar{E}_2$ in the second set?</p>
+<p>(Hint: we can approximate the uncertainty in each of the “$N_i$” measurements as the uncertainty given by the spread of the particular set.)</p>
+<p>(c) If he wishes to combine the measurements, calculate the mean and the uncertainty in the mean of the combined measurements?</p>
 
 </div>
 </div>
@@ -15110,21 +14879,7 @@ The solution for the longest sub-sequence is [1, 2, 5, 6, 7, 8, 9]
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Problem-6">Problem 6<a class="anchor-link" href="#Problem-6">&#182;</a></h2><p>Simulating Bellman-Ford and Floyd-Warshall algorithms using the following graph. In the case
-of Bellman-Ford algorithm, use vertex 0 as the source.</p>
-<p><img src="data:image/png;base64,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" alt="image.png" /></p>
-
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>The graph is put into the algorithm as a matrix (where $I$ are the unconected ones and are just ignored in the algortihm).</p>
+<p>If we take the spead to be the uncertainty of each value, we can combine the uncertainties to get the uncertainty of the averages $\bar{E}_1$ and $\bar{E}_2$. I will use the same funciton defined above.</p>
 
 </div>
 </div>
@@ -15134,46 +14889,26 @@ of Bellman-Ford algorithm, use vertex 0 as the source.</p>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[58]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[32]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">from</span> <span class="nn">tabulate</span> <span class="kn">import</span> <span class="n">tabulate</span>
-<span class="kn">import</span> <span class="nn">copy</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">N1</span> <span class="o">=</span> <span class="mi">44</span> <span class="c1"># measurments</span>
+<span class="n">N2</span> <span class="o">=</span> <span class="mi">12</span> <span class="c1"># measurments</span>
 
-<span class="n">I</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">inf</span>
+<span class="n">e1</span> <span class="o">=</span> <span class="mf">1.022</span> <span class="c1"># MeV</span>
+<span class="n">e2</span> <span class="o">=</span> <span class="mf">1.018</span> <span class="c1"># MeV</span>
 
-<span class="n">G1</span> <span class="o">=</span> <span class="p">[[</span> <span class="n">I</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="n">I</span><span class="p">,</span> <span class="n">I</span><span class="p">],</span>
-      <span class="p">[</span> <span class="mi">1</span><span class="p">,</span> <span class="n">I</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="n">I</span><span class="p">],</span>
-      <span class="p">[</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">I</span><span class="p">,</span> <span class="n">I</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
-      <span class="p">[</span> <span class="n">I</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="n">I</span><span class="p">,</span> <span class="n">I</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span>
-      <span class="p">[</span> <span class="n">I</span><span class="p">,</span> <span class="n">I</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="n">I</span><span class="p">]]</span>
+<span class="n">s1</span> <span class="o">=</span> <span class="mf">0.010</span> <span class="c1"># MeV</span>
+<span class="n">s2</span> <span class="o">=</span> <span class="mf">0.004</span> <span class="c1"># MeV</span>
 
-<span class="k">def</span> <span class="nf">bell_ford</span><span class="p">(</span><span class="n">G</span><span class="p">:</span><span class="nb">list</span><span class="p">[</span><span class="nb">list</span><span class="p">],</span> <span class="n">v0</span><span class="p">:</span><span class="nb">int</span><span class="p">):</span>
-    <span class="n">V</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
-    <span class="n">path</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">inf</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">V</span><span class="p">)]</span>
-    <span class="n">path</span><span class="p">[</span><span class="n">v0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">uncertainties1</span> <span class="o">=</span> <span class="p">[</span><span class="n">s1</span><span class="p">]</span> <span class="o">*</span> <span class="n">N1</span>
+<span class="n">uncertainties2</span> <span class="o">=</span> <span class="p">[</span><span class="n">s2</span><span class="p">]</span> <span class="o">*</span> <span class="n">N2</span>
 
-    <span class="n">history</span> <span class="o">=</span> <span class="p">[</span><span class="n">copy</span><span class="o">.</span><span class="n">deepcopy</span><span class="p">(</span><span class="n">path</span><span class="p">)]</span>
+<span class="n">sigma1</span> <span class="o">=</span> <span class="n">weighted_uncertainty</span><span class="p">(</span><span class="n">uncertainties1</span><span class="p">)</span>
+<span class="n">sigma2</span> <span class="o">=</span> <span class="n">weighted_uncertainty</span><span class="p">(</span><span class="n">uncertainties2</span><span class="p">)</span>
 
-
-    <span class="k">for</span> <span class="n">vertex</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">V</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>  
-        <span class="c1"># for each edge  </span>
-        <span class="k">for</span> <span class="n">v</span><span class="p">,</span> <span class="n">v_edges</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">G</span><span class="p">):</span>
-            <span class="n">curr</span> <span class="o">=</span> <span class="n">path</span><span class="p">[</span><span class="n">v</span><span class="p">]</span>
-            <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">e</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">v_edges</span><span class="p">):</span>
-                <span class="k">if</span> <span class="n">e</span> <span class="o">==</span> <span class="n">I</span><span class="p">:</span>
-                    <span class="k">continue</span>
-                <span class="k">if</span> <span class="n">curr</span> <span class="o">+</span> <span class="n">e</span> <span class="o">&lt;</span> <span class="n">path</span><span class="p">[</span><span class="n">i</span><span class="p">]:</span>
-                    <span class="n">path</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">curr</span> <span class="o">+</span> <span class="n">e</span>
-            <span class="n">history</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">copy</span><span class="o">.</span><span class="n">deepcopy</span><span class="p">(</span><span class="n">path</span><span class="p">))</span>
-    
-    <span class="k">return</span> <span class="n">history</span>
-
-
-<span class="c1"># print(tabulate(G1, headers=[&quot;Vs&quot;,0,1,2,3,4], showindex=[0,1,2,3,4]))</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The lengths of the paths are:&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">tabulate</span><span class="p">(</span><span class="n">bell_ford</span><span class="p">(</span><span class="n">G1</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">headers</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;V0&quot;</span><span class="p">,</span><span class="s2">&quot;V1&quot;</span><span class="p">,</span><span class="s2">&quot;V2&quot;</span><span class="p">,</span><span class="s2">&quot;V3&quot;</span><span class="p">,</span><span class="s2">&quot;V4&quot;</span><span class="p">]))</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;(a) The uncertainty for E1 is </span><span class="si">{</span><span class="n">sigma1</span><span class="si">:</span><span class="s2">.2</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;(b) The uncertainty for E2 is </span><span class="si">{</span><span class="n">sigma2</span><span class="si">:</span><span class="s2">.2</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 
      </div>
@@ -15193,30 +14928,8 @@ of Bellman-Ford algorithm, use vertex 0 as the source.</p>
 
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>The lengths of the paths are:
-  V0    V1    V2    V3    V4
-----  ----  ----  ----  ----
-   0   inf   inf   inf   inf
-   0     1    -3   inf   inf
-   0     1    -3     6   inf
-  -6    -1    -3     6    -2
-  -6    -1    -3     6    -2
-  -6    -1    -3     2    -2
-  -6    -5    -9     2    -2
-  -6    -5    -9     0    -2
- -12    -7    -9     0    -8
- -12    -7    -9     0    -8
- -12    -7    -9    -4    -8
- -12   -11   -15    -4    -8
- -12   -11   -15    -6    -8
- -18   -13   -15    -6   -14
- -18   -13   -15    -6   -14
- -18   -13   -15   -10   -14
- -18   -17   -21   -10   -14
- -18   -17   -21   -12   -14
- -24   -19   -21   -12   -20
- -24   -19   -21   -12   -20
- -24   -19   -21   -16   -20
+<pre>(a) The uncertainty for E1 is 0.0015
+(b) The uncertainty for E2 is 0.0012
 </pre>
 </div>
 </div>
@@ -15232,19 +14945,7 @@ of Bellman-Ford algorithm, use vertex 0 as the source.</p>
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>As seen above the algorithm doesn't work because there is a negative loop, which just causes everything to become more and more negative.</p>
-
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>Next we will apply the the Floyd-Warshal algorithm, but it fails for the same reason as the Bellman-Ford one does.</p>
+<p>Now we can use the functions again to combine these values.</p>
 
 </div>
 </div>
@@ -15254,29 +14955,13 @@ of Bellman-Ford algorithm, use vertex 0 as the source.</p>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[55]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[33]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">floyd_warsh</span><span class="p">(</span><span class="n">G</span><span class="p">:</span><span class="nb">list</span><span class="p">[</span><span class="nb">list</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">:</span>
-    <span class="n">V</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
-    <span class="n">paths</span> <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">deepcopy</span><span class="p">(</span><span class="n">G</span><span class="p">)</span> <span class="c1">#[[np.inf for _ in range(V)] for _ in range(V)]</span>
-    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">V</span><span class="p">):</span>
-        <span class="n">paths</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">e_avg</span> <span class="o">=</span> <span class="n">weighted_mean</span><span class="p">([</span><span class="n">e1</span><span class="p">,</span><span class="n">e2</span><span class="p">],</span> <span class="p">[</span><span class="n">sigma1</span><span class="p">,</span><span class="n">sigma2</span><span class="p">])</span>
+<span class="n">sigma_avg</span> <span class="o">=</span> <span class="n">weighted_uncertainty</span><span class="p">([</span><span class="n">sigma1</span><span class="p">,</span><span class="n">sigma2</span><span class="p">])</span>
 
-    <span class="c1"># intermidiate vertex</span>
-    <span class="k">for</span> <span class="n">inter</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">V</span><span class="p">):</span>
-        <span class="c1"># source vertex</span>
-        <span class="k">for</span> <span class="n">source</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">V</span><span class="p">):</span>
-            <span class="c1"># destination vertex</span>
-            <span class="k">for</span> <span class="n">end</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">V</span><span class="p">):</span>
-                <span class="c1"># take the max between the current recorded shortest, </span>
-                <span class="c1">#  and the next path through intermiadiate vertex</span>
-                <span class="n">paths</span><span class="p">[</span><span class="n">source</span><span class="p">][</span><span class="n">end</span><span class="p">]</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">paths</span><span class="p">[</span><span class="n">source</span><span class="p">][</span><span class="n">end</span><span class="p">],</span> <span class="n">paths</span><span class="p">[</span><span class="n">source</span><span class="p">][</span><span class="n">inter</span><span class="p">]</span> <span class="o">+</span> <span class="n">paths</span><span class="p">[</span><span class="n">inter</span><span class="p">][</span><span class="n">end</span><span class="p">])</span>
-
-    <span class="nb">print</span><span class="p">(</span><span class="n">tabulate</span><span class="p">(</span><span class="n">paths</span><span class="p">))</span>
-
-<span class="c1"># print(tabulate(G1))</span>
-<span class="n">floyd_warsh</span><span class="p">(</span><span class="n">G1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;(c) The average E is going to be </span><span class="si">{</span><span class="n">e_avg</span><span class="si">:</span><span class="s2">.4</span><span class="si">}</span><span class="s2"> ± </span><span class="si">{</span><span class="n">sigma_avg</span><span class="si">:</span><span class="s2">.2</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 
      </div>
@@ -15296,364 +14981,7 @@ of Bellman-Ford algorithm, use vertex 0 as the source.</p>
 
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>----  ----  ----  ----  ----
- -88   -87   -91  -100  -156
- -87   -86   -90   -99  -155
- -91   -90   -94  -103  -159
--100   -99  -103  -112  -168
--156  -155  -159  -168  -224
-----  ----  ----  ----  ----
-</pre>
-</div>
-</div>
-
-</div>
-
-</div>
-
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Problem-7">Problem 7<a class="anchor-link" href="#Problem-7">&#182;</a></h2><p>The Bellman-Ford algorithm for single-source shortest paths on a graph $G(V,E)$ as discussed
-in class has a running time of $O(|V|^3)$, where $|V|$ is the number of vertices in the given graph.
-However, when the graph is sparse $(|E| &lt;&lt; |V|^2)$, then this running time can be improved
-to $O(|V||E|)$. Describe how how this can be done.</p>
-
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>If we have a graph input as an adjacentcy matrix then the time it takes to look at every edge is $(V^2)$. That is the number of edges in a graph with the maximum number of edges in it, so that is fine for a graph that is very connected. However if the number of edges is small compared to the value of $V^2$ then that is wasing a bunch of time looking at values that do not mean anything (i.e. the parts of the matrix representing edges that do not exist). Instead if we store the graph as an adjacency list instead, then we can just iterate over that list of edges once for $V-1$ times. That gives us out time complexity of $O(VE)$.</p>
-
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Problem-8">Problem 8<a class="anchor-link" href="#Problem-8">&#182;</a></h2><p>Let $G(V,E)$ be an undirected graph such that each vertex has an even degree. Design an
-$O(|V|+|E|)$ time algorithm to direct the edges of $G$ such that, for each vertex, the outdegree is
-equal to the indegree.</p>
-
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>If every vertex has an even degree, then if we were to take a walk across it then there would always be a way to both enter and leave the node, and never get stuck. That means we could make it a directed graph, where we also can always enter and leave each node without reuseing paths (i.e. one path in for each path out). We can do that by performing DFS and saving each path we take as a directed edge, not saving backtracking as edges. That would give us a set of edges that is the same size as the original set of edges.</p>
-
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<div class="highlight"><pre><span></span><span class="kd">function</span><span class="w"> </span><span class="nx">directify_graph</span><span class="p">(</span><span class="nx">G</span><span class="o">:</span><span class="w"> </span><span class="nx">graph</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="nx">QE</span><span class="w"> </span><span class="nx">be</span><span class="w"> </span><span class="nx">a</span><span class="w"> </span><span class="nx">queue</span>
-<span class="w">    </span><span class="nx">run</span><span class="w"> </span><span class="nx">DFS</span><span class="w"> </span><span class="nx">but</span><span class="w"> </span><span class="nx">when</span><span class="w"> </span><span class="nx">you</span><span class="w"> </span><span class="nx">take</span><span class="w"> </span><span class="nx">a</span><span class="w"> </span><span class="nx">path</span><span class="w"> </span><span class="nx">that</span><span class="w"> </span><span class="nx">is</span><span class="w"> </span><span class="nx">not</span><span class="w"> </span><span class="nx">backtracking</span><span class="o">:</span>
-<span class="w">        </span><span class="nx">add</span><span class="w"> </span><span class="p">(</span><span class="nx">current</span><span class="w"> </span><span class="nx">vetex</span><span class="p">,</span><span class="w"> </span><span class="nx">vertex</span><span class="w"> </span><span class="nx">traveling</span><span class="w"> </span><span class="nx">to</span><span class="p">)</span><span class="w"> </span><span class="nx">to</span><span class="w"> </span><span class="nx">QE</span>
-<span class="w">    </span><span class="c1">// QE can be stored as a list, so that becomes the new directed adjacency list</span>
-<span class="p">}</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Problem-9">Problem 9<a class="anchor-link" href="#Problem-9">&#182;</a></h2><p>Consider a connected undirected graph $G(V,E)$. Answer the following questions:<br />
-<br />
-(a) Prove that the graph $G$ contains a vertex $v$ such that removing $v$ and all of its incident
-edges will <strong>not</strong> disconnect $G$.<br />
-<br />
-(b) Design a linear time algorithm to find such a vertex.</p>
-
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>(a) If the connected graph $G$ has $|V|$ verticies and $|E|$ edges, then the minimum number of edges it can have to be connected is $|V|-1$. That means that any connected graph with $|V|$ verticies can have verticies removed until it is an $|V|-1$ number of verticies. Since there are $|V|-1$ edges and each edge connects two verticies that means there are $2(|V|-1) = 2|V| - 2$ connections to verticies, which means there are not enough connections for each vertex to have two connections. By this we know that at least 2 verticies will only have one connection and those verticies can be removed without creating a disconected graph since no path to any other vertex an have this one be as a &quot;stop&quot; along the way.</p>
-
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>(b) We know that if we find a node with one edge then it can be removed without disconecting the rest of the graph. Also we know that if we find one path from one vertex to another then any edges between them are not required for a connected graph. By this if we start at an arbitrary vertex and take one path, marking any vertex we have seen, we will either come to an end in the graph, or have to backtrack to get to a new node. When either of those cases occur, we know we have reached a node that can be removed.</p>
-
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<div class="highlight"><pre><span></span><span class="kd">function</span><span class="w"> </span><span class="nx">find_removeable_node</span><span class="p">(</span><span class="nx">graph</span><span class="o">:</span><span class="w"> </span><span class="nx">connected</span><span class="w"> </span><span class="nx">graph</span><span class="p">){</span>
-<span class="w">    </span><span class="c1">// take it that there is some sort of indexed verticies</span>
-<span class="w">    </span><span class="nx">V</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">first</span><span class="w"> </span><span class="nx">vertex</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="nx">graph</span>
-<span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="nx">True</span><span class="o">:</span>
-<span class="w">        </span><span class="nx">mark</span><span class="w"> </span><span class="nx">V</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="nx">seen</span>
-<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="nx">there</span><span class="w"> </span><span class="nx">is</span><span class="w"> </span><span class="nx">no</span><span class="w"> </span><span class="nx">unseen</span><span class="w"> </span><span class="nx">vertex</span><span class="w"> </span><span class="nx">to</span><span class="w"> </span><span class="nx">move</span><span class="w"> </span><span class="nx">to</span><span class="o">:</span>
-<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="nx">V</span>
-<span class="w">        </span><span class="k">else</span><span class="o">:</span><span class="w"> </span>
-<span class="w">            </span><span class="nx">move</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="nx">V</span><span class="w"> </span><span class="nx">to</span><span class="w"> </span><span class="nx">another</span><span class="w"> </span><span class="nx">unseen</span><span class="w"> </span><span class="nx">vertex</span><span class="w"> </span><span class="nx">along</span><span class="w"> </span><span class="nx">an</span><span class="w"> </span><span class="nx">edge</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="nx">graph</span>
-<span class="p">}</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>This algorithm runs in linear time because it only has to look at each edge once. It does not even have the $O(V)$ time because there is no backtracking. That means its just running time $O(E)$.</p>
-
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Problem-10">Problem 10<a class="anchor-link" href="#Problem-10">&#182;</a></h2><p>Suppose you are given $n$ positive integers $d_1,d_2,...,d_n$ such that $d_1 + d_2 + ... + d_n = 2n −2$.
-Answer the following questions:<br />
-<br />
-(a) Prove that there is a tree of $n$ vertices with vertex degrees $d_1,d_2,...,d_n$.<br />
-<br />
-(b) Design an algorithm to construct such a tree.</p>
-
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>(a) Problem 9a talks about the fact that a minimally connected graph has $2V - 2$ edges if it has $V$ verticies. A tree is a graph that has no cycles and therefor is minimally connected, having $V-1$ edges, therfore $2V-2$ connections. If thetotal number of degrees is equal to $2n-2$ then it is a tree since it is a minumally connected graph.</p>
-
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>(b) If we have the list of degrees we know will be able to become a tree then we start by sorting them in decending order. Then we create the root with $d_1$ nodes, where those nodes will have $d_{2}-1, d_{3}-1, ... d_{d_1}-1$ nodes themselves. This is repeated for each of those nodes and their children.</p>
-
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<div class="highlight"><pre><span></span><span class="kd">class</span><span class="w"> </span><span class="nx">Node</span><span class="p">(</span><span class="nx">n</span><span class="o">:</span><span class="w"> </span><span class="nx">number</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="nx">children</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">number</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="nx">child</span><span class="w"> </span><span class="nx">nodes</span>
-<span class="w">    </span><span class="nx">children</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">a</span><span class="w"> </span><span class="nx">list</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="nx">Nodes</span>
-<span class="p">}</span>
-
-<span class="kd">function</span><span class="w"> </span><span class="nx">make_tree</span><span class="p">(</span><span class="nx">ds</span><span class="o">:</span><span class="w"> </span><span class="nx">stack</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="nx">degrees</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="c1">// check </span>
-<span class="w">    </span><span class="nx">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">length</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="nx">ds</span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">sum</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="nx">ds</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="p">(</span><span class="mf">2</span><span class="o">*</span><span class="nx">n</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mf">2</span><span class="p">)</span><span class="o">:</span>
-<span class="w">        </span><span class="k">throw</span><span class="w"> </span><span class="nx">error</span>
-
-<span class="w">    </span><span class="nx">tree</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">Node</span><span class="p">(</span><span class="nx">ds</span><span class="p">.</span><span class="nx">pop</span><span class="p">())</span>
-
-<span class="w">    </span><span class="nx">Q</span><span class="w"> </span><span class="nx">is</span><span class="w"> </span><span class="nx">a</span><span class="w"> </span><span class="nx">queue</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="nx">Nodes</span>
-
-<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="nx">next</span><span class="w"> </span><span class="nx">element</span><span class="w"> </span><span class="nx">N</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="nx">Q</span><span class="o">:</span>
-<span class="w">        </span><span class="nx">N</span><span class="p">.</span><span class="nx">children</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">list</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="nx">N</span><span class="p">.</span><span class="nx">n</span><span class="w"> </span><span class="nx">Nodes</span><span class="w"> </span><span class="nx">each</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">size</span><span class="w"> </span><span class="p">(</span><span class="nx">ds</span><span class="p">.</span><span class="nx">pop</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mf">1</span><span class="p">)</span><span class="w"> </span>
-<span class="w">        </span><span class="c1">// d - 1 because it already has a degree used for the parent</span>
-<span class="w">        </span><span class="nx">add</span><span class="w"> </span><span class="nx">each</span><span class="w"> </span><span class="nx">element</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="nx">N</span><span class="p">.</span><span class="nx">children</span><span class="w"> </span><span class="nx">to</span><span class="w"> </span><span class="nx">Q</span>
-<span class="p">}</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Problem-11">Problem 11<a class="anchor-link" href="#Problem-11">&#182;</a></h2><p>Arbitrage is the use of discrepancies in currency exchange rates to transform one unit of currency
-into more than one unit of the same currency. Hypothetically, suppose that 1 US dollar buys
-46.4 Indian Rupees. 1 Indian Rupee buys 2.5 Japanese Yens, and 1 Japanese Yen buys 0.0091
-US dollars. Then by converting currencies, a trader can start with 1 US dollar and buy 46.4
-Rupees, and then use the Rupees to buy 46.4 ×2.5 = 116 Yens, and then use the Yens to buy
-116 x 0.0091 = 1.0556 US Dollars. Thus turning a profit of 5.56 cents. Suppose you are given an
-$n \times n$ currency exchange table. Design an efficient algorithm to discover if there is an arbitrage.</p>
-
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>We can take the $n \times n$ currency table is essentially an adjacency matrix. We then want a shortest path like algorithms, but instead of adding the weights of the edges, it multiplies them. We want to find if there is ANY arbitrage so we want to use the Floyd-Warshall algorithm. The only changes we have to make are that the addition of weights becomes a multiplication and we initialize the central diagonal to be 1s instead of 0s. Then at the end if there are any central diagonals that are non 1 then we have some path that will let us decreas value, and we just have to take that path backwards to make all the money we want.</p>
-
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<div class="highlight"><pre><span></span><span class="nx">def</span><span class="w"> </span><span class="nx">floyd_warsh</span><span class="p">(</span><span class="nx">G</span><span class="o">:</span><span class="w"> </span><span class="nx">adjacency</span><span class="w"> </span><span class="nx">matrix</span><span class="p">){</span>
-<span class="w">    </span><span class="nx">V</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">len</span><span class="p">(</span><span class="nx">G</span><span class="p">)</span><span class="w"> </span><span class="nx">or</span><span class="w"> </span><span class="nx">number</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="nx">verticies</span>
-<span class="w">    </span><span class="nx">set</span><span class="w"> </span><span class="nx">the</span><span class="w"> </span><span class="nx">center</span><span class="w"> </span><span class="nx">diagonal</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="nx">G</span><span class="w"> </span><span class="nx">to</span><span class="w"> </span><span class="mf">1</span>
-
-<span class="w">    </span><span class="c1">// intermidiate vertex</span>
-<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="nx">inter</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="nx">range</span><span class="p">(</span><span class="nx">V</span><span class="p">)</span><span class="o">:</span>
-<span class="w">        </span><span class="c1">// source vertex</span>
-<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="nx">source</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="nx">range</span><span class="p">(</span><span class="nx">V</span><span class="p">)</span><span class="o">:</span>
-<span class="w">            </span><span class="c1">// destination vertex</span>
-<span class="w">            </span><span class="k">for</span><span class="w"> </span><span class="nx">end</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="nx">range</span><span class="p">(</span><span class="nx">V</span><span class="p">)</span><span class="o">:</span>
-<span class="w">                </span><span class="c1">// take the max between the current recorded shortest, </span>
-<span class="w">                </span><span class="c1">// and the next path through intermiadiate vertex</span>
-<span class="w">                </span><span class="nx">paths</span><span class="p">[</span><span class="nx">source</span><span class="p">][</span><span class="nx">end</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">min</span><span class="p">(</span><span class="nx">paths</span><span class="p">[</span><span class="nx">source</span><span class="p">][</span><span class="nx">end</span><span class="p">],</span><span class="w"> </span><span class="nx">paths</span><span class="p">[</span><span class="nx">source</span><span class="p">][</span><span class="nx">inter</span><span class="p">]</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nx">paths</span><span class="p">[</span><span class="nx">inter</span><span class="p">][</span><span class="nx">end</span><span class="p">])</span>
-<span class="p">}</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[87]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-
-<span class="k">def</span> <span class="nf">floyd_warsh</span><span class="p">(</span><span class="n">G</span><span class="p">:</span><span class="nb">list</span><span class="p">[</span><span class="nb">list</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">:</span>
-    <span class="n">V</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
-    <span class="n">paths</span> <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">deepcopy</span><span class="p">(</span><span class="n">G</span><span class="p">)</span> <span class="c1">#[[np.inf for _ in range(V)] for _ in range(V)]</span>
-    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">V</span><span class="p">):</span>
-        <span class="n">paths</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
-
-    <span class="c1"># intermidiate vertex</span>
-    <span class="k">for</span> <span class="n">inter</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">V</span><span class="p">):</span>
-        <span class="c1"># source vertex</span>
-        <span class="k">for</span> <span class="n">source</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">V</span><span class="p">):</span>
-            <span class="c1"># destination vertex</span>
-            <span class="k">for</span> <span class="n">end</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">V</span><span class="p">):</span>
-                <span class="c1"># take the max between the current recorded shortest, </span>
-                <span class="c1">#  and the next path through intermiadiate vertex</span>
-                <span class="n">paths</span><span class="p">[</span><span class="n">source</span><span class="p">][</span><span class="n">end</span><span class="p">]</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">paths</span><span class="p">[</span><span class="n">source</span><span class="p">][</span><span class="n">end</span><span class="p">],</span> <span class="n">paths</span><span class="p">[</span><span class="n">source</span><span class="p">][</span><span class="n">inter</span><span class="p">]</span> <span class="o">*</span> <span class="n">paths</span><span class="p">[</span><span class="n">inter</span><span class="p">][</span><span class="n">end</span><span class="p">])</span>
-
-    <span class="k">return</span> <span class="n">paths</span>
-
-<span class="n">G1</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span>      <span class="mf">46.4</span><span class="p">,</span>   <span class="mi">1</span><span class="o">/</span><span class="mf">0.0091</span><span class="p">,</span> <span class="mi">1000</span><span class="p">],</span>
-      <span class="p">[</span><span class="mi">1</span><span class="o">/</span><span class="mf">46.4</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span>      <span class="mf">2.5</span><span class="p">,</span>    <span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">],</span>
-      <span class="p">[</span><span class="mf">0.0091</span> <span class="p">,</span> <span class="mi">1</span><span class="o">/</span><span class="mf">2.5</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span>      <span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">],</span>
-      <span class="p">[</span><span class="mi">1</span><span class="o">/</span><span class="mi">1000</span><span class="p">,</span>  <span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">,</span> <span class="mi">1</span><span class="p">]]</span>
-
-<span class="n">h</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Dollar&quot;</span><span class="p">,</span> <span class="s2">&quot;Rupee&quot;</span><span class="p">,</span> <span class="s2">&quot;Yen&quot;</span><span class="p">,</span> <span class="s2">&quot;Peso&quot;</span><span class="p">]</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">tabulate</span><span class="p">(</span><span class="n">G1</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">h</span><span class="p">,</span> <span class="n">showindex</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Dollar&quot;</span><span class="p">,</span> <span class="s2">&quot;Rupee&quot;</span><span class="p">,</span> <span class="s2">&quot;Yen&quot;</span><span class="p">,</span> <span class="s2">&quot;Peso&quot;</span><span class="p">]))</span>
-<span class="n">G2</span> <span class="o">=</span> <span class="n">floyd_warsh</span><span class="p">(</span><span class="n">G1</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">tabulate</span><span class="p">(</span><span class="n">G2</span><span class="p">))</span>
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-
-
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-
-
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>           Dollar    Rupee     Yen    Peso
-------  ---------  -------  ------  ------
-Dollar  1             46.4  109.89    1000
-Rupee   0.0215517      1      2.5      inf
-Yen     0.0091         0.4    1        inf
-Peso    0.001        inf    inf          1
------------  ----------  ----------  ----------
-0.805383     37.3698     88.5036     684.706
-0.0173574     0.805383    1.90741     14.7566
-0.00694296    0.322153    0.762962     5.90264
-0.000684706   0.0317704   0.0752425    0.582112
------------  ----------  ----------  ----------
+<pre>(c) The average E is going to be 1.019 ± 0.00092
 </pre>
 </div>
 </div>
